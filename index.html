@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Good42 Apps - Pomotime & 공유일기</title>
+    <title>Good42 Apps - Pomotime & Shared Diary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -21,16 +21,40 @@
       .app-card:hover {
         transform: translateY(-5px);
       }
+      [lang="ko"] :lang(en) {
+        display: none;
+      }
+      [lang="en"] :lang(ko) {
+        display: none;
+      }
     </style>
   </head>
   <body class="bg-gray-50 text-gray-900">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+      <button
+        onclick="toggleLanguage()"
+        class="bg-white/80 backdrop-blur-sm border border-gray-200 px-3 py-1.5 rounded-full shadow-sm text-sm font-medium hover:bg-gray-50 transition"
+      >
+        <span lang="en">🇰🇷 한국어</span>
+        <span lang="ko">🇺🇸 English</span>
+      </button>
+    </div>
+
     <!-- Hero Section -->
     <header class="py-16 px-4 text-center bg-white border-b border-gray-100">
       <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-        안녕하세요, 좋은사이(Good42)입니다.
+        <span lang="ko">안녕하세요, 좋은사이(Good42)입니다.</span>
+        <span lang="en">Hello, we are Good42.</span>
       </h1>
       <p class="mt-4 text-lg text-gray-600">
-        일상에 가치를 더하는 심플하고 따뜻한 앱을 만듭니다.
+        <span lang="ko"
+          >일상에 가치를 더하는 심플하고 따뜻한 앱을 만듭니다.</span
+        >
+        <span lang="en"
+          >We create simple and warm apps that add value to your daily
+          life.</span
+        >
       </p>
     </header>
 
@@ -41,27 +65,58 @@
           <div
             class="inline-block px-3 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-full"
           >
-            생산성
+            <span lang="ko">생산성</span>
+            <span lang="en">Productivity</span>
           </div>
           <h2 class="text-3xl font-bold">Pomotime: Focus Timer</h2>
           <p class="text-xl text-gray-600 font-medium">
-            집중을 위한 가장 심플한 뽀모도로 타이머
+            <span lang="ko">집중을 위한 가장 심플한 뽀모도로 타이머</span>
+            <span lang="en">The simplest Pomodoro timer for focus</span>
           </p>
           <div class="text-gray-600 space-y-4 leading-relaxed">
-            <p>"심플하지만 강력한 집중의 도구, Pomotime"</p>
             <p>
+              <span lang="ko">"심플하지만 강력한 집중의 도구, Pomotime"</span>
+              <span lang="en"
+                >"A simple but powerful tool for focus, Pomotime"</span
+              >
+            </p>
+            <p lang="ko">
               복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. 효율적인 시간
               관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
             </p>
+            <p lang="en">
+              Skip complex settings and immerse yourself in "Focus". We've
+              implemented the Pomodoro technique, an efficient time management
+              method, in the most intuitive way.
+            </p>
             <ul class="list-disc list-inside space-y-1 ml-2">
-              <li>
+              <li lang="ko">
                 🔥 <strong>불꽃 아이콘</strong>으로 집중 시간을 직관적으로 표시
               </li>
-              <li>
+              <li lang="en">
+                🔥 Intuitively display focus time with the
+                <strong>Flame icon</strong>
+              </li>
+              <li lang="ko">
                 🌿 <strong>나뭇잎 아이콘</strong>으로 리프레시 시간을 확인
               </li>
-              <li>✨ 작업에 방해되지 않는 <strong>미니멀 디자인</strong></li>
-              <li>⚙️ 내 컨디션에 맞춘 <strong>커스텀 타이머</strong> 설정</li>
+              <li lang="en">
+                🌿 Check refresh time with the <strong>Leaf icon</strong>
+              </li>
+              <li lang="ko">
+                ✨ 작업에 방해되지 않는 <strong>미니멀 디자인</strong>
+              </li>
+              <li lang="en">
+                ✨ <strong>Minimal design</strong> that doesn't distract from
+                your work
+              </li>
+              <li lang="ko">
+                ⚙️ 내 컨디션에 맞춘 <strong>커스텀 타이머</strong> 설정
+              </li>
+              <li lang="en">
+                ⚙️ <strong>Custom timer</strong> settings tailored to your
+                condition
+              </li>
             </ul>
           </div>
           <div class="pt-4">
@@ -70,7 +125,8 @@
               target="_blank"
               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
             >
-              App Store에서 보기
+              <span lang="ko">App Store에서 보기</span>
+              <span lang="en">View on App Store</span>
             </a>
           </div>
         </div>
@@ -104,28 +160,55 @@
           <div
             class="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full"
           >
-            소셜 네트워킹
+            <span lang="ko">소셜 네트워킹</span>
+            <span lang="en">Social Networking</span>
           </div>
-          <h2 class="text-3xl font-bold">공유일기: 함께 쓰는 일기</h2>
+          <h2 class="text-3xl font-bold">
+            <span lang="ko">공유일기: 함께 쓰는 일기</span>
+            <span lang="en">Shared Diary: Journaling Together</span>
+          </h2>
           <p class="text-xl text-gray-600 font-medium">
-            소중한 사람과 함께 기록하는 우리만의 세상
+            <span lang="ko">소중한 사람과 함께 기록하는 우리만의 세상</span>
+            <span lang="en">Our own world recorded with loved ones</span>
           </p>
           <div class="text-gray-600 space-y-4 leading-relaxed">
-            <p>
+            <p lang="ko">
               당신의 일기장에 소중한 사람을 초대해 보세요. 서로의 기록을 엮어
               하나의 추억으로 간직해봐요.
+            </p>
+            <p lang="en">
+              Invite your loved ones to your diary. Stitch your records together
+              and keep them as a single memory.
             </p>
             <ul
               class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2"
             >
-              <li>🏠 <strong>나만의 공간</strong>에서 자유롭게 작성</li>
-              <li>
+              <li lang="ko">
+                🏠 <strong>나만의 공간</strong>에서 자유롭게 작성
+              </li>
+              <li lang="en">
+                🏠 Write freely in <strong>your own space</strong>
+              </li>
+              <li lang="ko">
                 👥 가족, 친구, 연인을 초대하여 <strong>함께 쓰는 일기</strong>
               </li>
-              <li>
+              <li lang="en">
+                👥 <strong>Write together</strong> by inviting family, friends,
+                or partners
+              </li>
+              <li lang="ko">
                 🎁 매일의 작은 이야기를 나누는 <strong>공유의 즐거움</strong>
               </li>
-              <li>📦 소중한 기억을 담는 <strong>추억 보물상자</strong></li>
+              <li lang="en">
+                🎁 <strong>The joy of sharing</strong> everyday little stories
+              </li>
+              <li lang="ko">
+                📦 소중한 기억을 담는 <strong>추억 보물상자</strong>
+              </li>
+              <li lang="en">
+                📦 A <strong>treasure box of memories</strong> containing
+                precious moments
+              </li>
             </ul>
           </div>
           <div class="pt-4">
@@ -134,7 +217,8 @@
               target="_blank"
               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
             >
-              App Store에서 보기
+              <span lang="ko">App Store에서 보기</span>
+              <span lang="en">View on App Store</span>
             </a>
           </div>
         </div>
@@ -155,7 +239,10 @@
               "
             />
             <div class="px-6">
-              <p class="text-gray-400 text-xs">공유일기</p>
+              <p class="text-gray-400 text-xs">
+                <span lang="ko">공유일기</span>
+                <span lang="en">Shared Diary</span>
+              </p>
             </div>
           </div>
         </div>
@@ -172,16 +259,38 @@
             href="https://ninos.notion.site/Pomotime-30298f0367808009a746e6d41db60cd1"
             target="_blank"
             class="hover:text-gray-600 underline"
-            >Pomotime 개인정보 처리방침</a
           >
+            <span lang="ko">Pomotime 개인정보 처리방침</span>
+            <span lang="en">Pomotime Privacy Policy</span>
+          </a>
           <a
             href="https://exchange-diary.imweb.me/?mode=privacy"
             target="_blank"
             class="hover:text-gray-600 underline"
-            >공유일기 개인정보 처리방침</a
           >
+            <span lang="ko">공유일기 개인정보 처리방침</span>
+            <span lang="en">Shared Diary Privacy Policy</span>
+          </a>
         </div>
       </div>
     </footer>
+
+    <script>
+      function setLanguage(lang) {
+        document.documentElement.setAttribute("lang", lang);
+        localStorage.setItem("preferred-language", lang);
+      }
+
+      function toggleLanguage() {
+        const currentLang = document.documentElement.getAttribute("lang");
+        const newLang = currentLang === "en" ? "ko" : "en";
+        setLanguage(newLang);
+      }
+
+      // Initialize language from localStorage or browser settings
+      const savedLang = localStorage.getItem("preferred-language");
+      const browserLang = navigator.language.startsWith("ko") ? "ko" : "en";
+      setLanguage(savedLang || browserLang);
+    </script>
   </body>
 </html>
