@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good42 Apps - Pomotime & 공유일기</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      body {
+        font-family: "Pretendard", sans-serif;
+      }
+      .app-card {
+        transition: transform 0.3s ease;
+      }
+      .app-card:hover {
+        transform: translateY(-5px);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Hero Section -->
+    <header class="py-16 px-4 text-center bg-white border-b border-gray-100">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        안녕하세요, 좋은사이(Good42)입니다.
+      </h1>
+      <p class="mt-4 text-lg text-gray-600">
+        일상에 가치를 더하는 심플하고 따뜻한 앱을 만듭니다.
+      </p>
+    </header>
+
+    <main class="max-w-5xl mx-auto py-16 px-4 space-y-24">
+      <!-- Pomotime Section -->
+      <section class="flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-3 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-full"
+          >
+            생산성
+          </div>
+          <h2 class="text-3xl font-bold">Pomotime: Focus Timer</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            집중을 위한 가장 심플한 뽀모도로 타이머
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p>"심플하지만 강력한 집중의 도구, Pomotime"</p>
+            <p>
+              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. 효율적인 시간
+              관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li>
+                🔥 <strong>불꽃 아이콘</strong>으로 집중 시간을 직관적으로 표시
+              </li>
+              <li>
+                🌿 <strong>나뭇잎 아이콘</strong>으로 리프레시 시간을 확인
+              </li>
+              <li>✨ 작업에 방해되지 않는 <strong>미니멀 디자인</strong></li>
+              <li>⚙️ 내 컨디션에 맞춘 <strong>커스텀 타이머</strong> 설정</li>
+            </ul>
+          </div>
+          <div class="pt-4">
+            <a
+              href="https://apps.apple.com/kr/app/pomotime-focus-timer/id6758915328"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              App Store에서 보기
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 w-full max-w-sm text-center">
+          <div
+            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+            ></div>
+            <img
+              src="pomotime-icon.png"
+              alt="Pomotime Icon"
+              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              onerror="
+                this.src = 'https://via.placeholder.com/1024?text=Pomotime+Icon'
+              "
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">pomotime</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-gray-100" />
+
+      <!-- 공유일기 Section -->
+      <section class="flex flex-col md:flex-row-reverse items-center gap-12">
+        <div class="flex-1 space-y-6 text-right md:text-left">
+          <div
+            class="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full"
+          >
+            소셜 네트워킹
+          </div>
+          <h2 class="text-3xl font-bold">공유일기: 함께 쓰는 일기</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            소중한 사람과 함께 기록하는 우리만의 세상
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p>
+              당신의 일기장에 소중한 사람을 초대해 보세요. 서로의 기록을 엮어
+              하나의 추억으로 간직해봐요.
+            </p>
+            <ul
+              class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2"
+            >
+              <li>🏠 <strong>나만의 공간</strong>에서 자유롭게 작성</li>
+              <li>
+                👥 가족, 친구, 연인을 초대하여 <strong>함께 쓰는 일기</strong>
+              </li>
+              <li>
+                🎁 매일의 작은 이야기를 나누는 <strong>공유의 즐거움</strong>
+              </li>
+              <li>📦 소중한 기억을 담는 <strong>추억 보물상자</strong></li>
+            </ul>
+          </div>
+          <div class="pt-4">
+            <a
+              href="https://apps.apple.com/kr/app/%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0/id6474495000"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              App Store에서 보기
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 w-full max-w-sm text-center">
+          <div
+            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+            ></div>
+            <img
+              src="diary-icon.png"
+              alt="공유일기 Icon"
+              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/1024?text=%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0+Icon'
+              "
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">공유일기</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-12 px-4">
+      <div class="max-w-5xl mx-auto text-center space-y-4">
+        <p class="text-gray-500">
+          © 2026 INHO SHIN (Good42). All rights reserved.
+        </p>
+        <div class="flex justify-center space-x-6 text-sm text-gray-400">
+          <a
+            href="https://ninos.notion.site/Pomotime-30298f0367808009a746e6d41db60cd1"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            >Pomotime 개인정보 처리방침</a
+          >
+          <a
+            href="https://exchange-diary.imweb.me/?mode=privacy"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            >공유일기 개인정보 처리방침</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
