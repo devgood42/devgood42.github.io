@@ -58,9 +58,9 @@
       </p>
     </header>
 
-    <main class="max-w-5xl mx-auto py-16 px-4 space-y-24">
+    <main class="max-w-4xl mx-auto py-16 px-4 space-y-24">
       <!-- Scoreboard Section -->
-      <section class="flex flex-col md:flex-row items-center gap-12">
+      <section class="flex flex-col md:flex-row items-center gap-24">
         <div class="flex-1 space-y-6">
           <div
             class="inline-block px-3 py-1 bg-green-100 text-green-600 text-sm font-semibold rounded-full"
@@ -135,22 +135,29 @@
             </a>
           </div>
         </div>
-        <div class="flex-1 w-full max-w-sm text-center">
+        <div class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto">
           <div
-            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
           >
             <div
-              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
             ></div>
             <img
               src="assets/images/scoreboard-icon.png"
               alt="Scoreboard Icon"
-              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
               onerror="this.src = 'https://via.placeholder.com/1024?text=Scoreboard+Icon'"
             />
             <div class="px-6">
               <p class="text-gray-400 text-xs">scoreboard</p>
             </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/scoreboard.png"
+              alt="Scoreboard Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
           </div>
         </div>
       </section>
@@ -158,7 +165,7 @@
       <hr class="border-gray-100" />
 
       <!-- Pomotime Section -->
-      <section class="flex flex-col md:flex-row-reverse items-center gap-12">
+      <section class="flex flex-col md:flex-row-reverse items-center gap-24">
         <div class="flex-1 space-y-6 text-right md:text-left">
           <div
             class="inline-block px-3 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-full"
@@ -179,7 +186,7 @@
               >
             </p>
             <p lang="ko">
-              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. 효율적인 시간 관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
+              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. <br/>효율적인 시간 관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
             </p>
             <p lang="en">
               Skip complex settings and immerse yourself in "Focus". We've
@@ -245,17 +252,17 @@
             </a>
           </div>
         </div>
-        <div class="flex-1 w-full max-w-sm text-center">
+        <div class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto">
           <div
-            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
           >
             <div
-              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
             ></div>
             <img
               src="assets/images/pomotime-icon.png"
               alt="Pomotime Icon"
-              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
               onerror="
                 this.src = 'https://via.placeholder.com/1024?text=Pomotime+Icon'
               "
@@ -263,6 +270,13 @@
             <div class="px-6">
               <p class="text-gray-400 text-xs">pomotime</p>
             </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/pomotime.png"
+              alt="Pomotime Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
           </div>
         </div>
       </section>
@@ -270,7 +284,7 @@
       <hr class="border-gray-100" />
 
       <!-- 공유일기 Section -->
-      <section class="flex flex-col md:flex-row items-center gap-12">
+      <section class="flex flex-col md:flex-row items-center gap-24">
         <div class="flex-1 space-y-6">
           <div
             class="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full"
@@ -338,17 +352,17 @@
             </a>
           </div>
         </div>
-        <div class="flex-1 w-full max-w-sm text-center">
+        <div class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto">
           <div
-            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
           >
             <div
-              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
             ></div>
             <img
               src="assets/images/diary-icon.png"
               alt="공유일기 Icon"
-              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
               onerror="
                 this.src =
                   'https://via.placeholder.com/1024?text=%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0+Icon'
@@ -360,6 +374,13 @@
                 <span lang="en">Shared Diary</span>
               </p>
             </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/diary.png"
+              alt="Shared Diary Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
           </div>
         </div>
       </section>
