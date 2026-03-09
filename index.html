@@ -59,9 +59,107 @@
     </header>
 
     <main class="max-w-5xl mx-auto py-16 px-4 space-y-24">
-      <!-- Pomotime Section -->
+      <!-- Scoreboard Section -->
       <section class="flex flex-col md:flex-row items-center gap-12">
         <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-3 py-1 bg-green-100 text-green-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">스포츠</span>
+            <span lang="en">Sports</span>
+          </div>
+          <h2 class="text-3xl font-bold">Scoreboard: Live & Share</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">함께 즐기는 실시간 경기 점수판</span>
+            <span lang="en">Real-time scoreboard for everyone</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p lang="ko">
+              탁구, 배드민턴 등 다양한 스포츠의 점수를 실시간으로 기록하고 공유하세요.<br/>
+              실시간으로 어디서든 경기를 함께 즐길 수 있습니다.
+            </p>
+            <p lang="en">
+              Record and share scores for various sports like table tennis and badminton in real-time.
+              Enjoy the match together from anywhere in real-time.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li lang="ko">
+                🏓 <strong>실시간 연동</strong>으로 멀리서도 점수 확인
+              </li>
+              <li lang="en">
+                🏓 Check scores from afar with <strong>real-time synchronization</strong>
+              </li>
+              <li lang="ko">
+                📱 <strong>방 번호, QR코드</strong>를 통한 간편한 점수판 정보 공유
+              </li>
+              <li lang="en">
+                📱 Easy sharing of scoreboard information via <strong>Room Number, QR Code</strong>
+              </li>
+              <li lang="ko">
+                📊 경기 결과를 <strong>이미지로 저장</strong>하고 공유
+              </li>
+              <li lang="en">
+                📊 <strong>Save and share</strong> match results as images
+              </li>
+              <li lang="ko">
+                🌍 <strong>7개 언어</strong> 지원 및 다국어 환경 제공
+              </li>
+              <li lang="en">
+                🌍 <strong>7 languages</strong> supported for a global experience
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-3">
+            <a
+              href="#"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-2 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+            <a
+              href="#"
+              class="inline-flex items-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-2 -mt-0.5" viewBox="0 0 512 512">
+                <path fill="#00A1F1" d="M25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0c-13 6.8-21.7 19.2-21.7 35.3z"/>
+                <path fill="#FBBC05" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
+                <path fill="#34A853" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+                <path fill="#EA4335" d="M104.6 499l220.7-221.3 60.7 60.7L104.6 512c0 0-0.0-13-0.0-13z"/>
+              </svg>
+              <span lang="ko">Google Play</span>
+              <span lang="en">Google Play</span>
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 w-full max-w-sm text-center">
+          <div
+            class="aspect-[9/16] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
+            ></div>
+            <img
+              src="assets/images/scoreboard-icon.png"
+              alt="Scoreboard Icon"
+              class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
+              onerror="this.src = 'https://via.placeholder.com/1024?text=Scoreboard+Icon'"
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">scoreboard</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="border-gray-100" />
+
+      <!-- Pomotime Section -->
+      <section class="flex flex-col md:flex-row-reverse items-center gap-12">
+        <div class="flex-1 space-y-6 text-right md:text-left">
           <div
             class="inline-block px-3 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-full"
           >
@@ -81,15 +179,16 @@
               >
             </p>
             <p lang="ko">
-              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. 효율적인 시간
-              관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
+              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. 효율적인 시간 관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
             </p>
             <p lang="en">
               Skip complex settings and immerse yourself in "Focus". We've
               implemented the Pomodoro technique, an efficient time management
               method, in the most intuitive way.
             </p>
-            <ul class="list-disc list-inside space-y-1 ml-2">
+            <ul
+              class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2"
+            >
               <li lang="ko">
                 🔥 <strong>불꽃 아이콘</strong>으로 집중 시간을 직관적으로 표시
               </li>
@@ -119,14 +218,30 @@
               </li>
             </ul>
           </div>
-          <div class="pt-4">
+          <div class="pt-4 flex flex-wrap gap-3 justify-end md:justify-start">
             <a
               href="https://apps.apple.com/kr/app/pomotime-focus-timer/id6758915328"
               target="_blank"
               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
             >
-              <span lang="ko">App Store에서 보기</span>
-              <span lang="en">View on App Store</span>
+              <svg class="w-5 h-5 mr-2 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+            <a
+              href="#"
+              class="inline-flex items-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-2 -mt-0.5" viewBox="0 0 512 512">
+                <path fill="#00A1F1" d="M25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0c-13 6.8-21.7 19.2-21.7 35.3z"/>
+                <path fill="#FBBC05" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
+                <path fill="#34A853" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+                <path fill="#EA4335" d="M104.6 499l220.7-221.3 60.7 60.7L104.6 512c0 0-0.0-13-0.0-13z"/>
+              </svg>
+              <span lang="ko">Google Play</span>
+              <span lang="en">Google Play</span>
             </a>
           </div>
         </div>
@@ -138,7 +253,7 @@
               class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
             ></div>
             <img
-              src="pomotime-icon.png"
+              src="assets/images/pomotime-icon.png"
               alt="Pomotime Icon"
               class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
               onerror="
@@ -155,8 +270,8 @@
       <hr class="border-gray-100" />
 
       <!-- 공유일기 Section -->
-      <section class="flex flex-col md:flex-row-reverse items-center gap-12">
-        <div class="flex-1 space-y-6 text-right md:text-left">
+      <section class="flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6">
           <div
             class="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full"
           >
@@ -180,9 +295,7 @@
               Invite your loved ones to your diary. Stitch your records together
               and keep them as a single memory.
             </p>
-            <ul
-              class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2"
-            >
+            <ul class="list-disc list-inside space-y-1 ml-2">
               <li lang="ko">
                 🏠 <strong>나만의 공간</strong>에서 자유롭게 작성
               </li>
@@ -217,8 +330,11 @@
               target="_blank"
               class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
             >
-              <span lang="ko">App Store에서 보기</span>
-              <span lang="en">View on App Store</span>
+              <svg class="w-5 h-5 mr-2 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
             </a>
           </div>
         </div>
@@ -230,7 +346,7 @@
               class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full"
             ></div>
             <img
-              src="diary-icon.png"
+              src="assets/images/diary-icon.png"
               alt="공유일기 Icon"
               class="w-24 h-24 rounded-[1.2rem] shadow-xl mb-4"
               onerror="
@@ -255,6 +371,22 @@
           © 2026 INHO SHIN (Good42). All rights reserved.
         </p>
         <div class="flex justify-center space-x-6 text-sm text-gray-400">
+          <a
+            href="https://ninos.notion.site/31c98f0367808013a165cb79e2c08480"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="ko"
+          >
+            Scoreboard 개인정보 처리방침
+          </a>
+          <a
+            href="https://ninos.notion.site/Privacy-Policy-31c98f0367808095bb45c5d4e1eff611"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="en"
+          >
+            Scoreboard Privacy Policy
+          </a>
           <a
             href="https://ninos.notion.site/Pomotime-30298f0367808009a746e6d41db60cd1"
             target="_blank"
