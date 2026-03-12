@@ -83,8 +83,12 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            mix-blend-mode: exclusion;
-            color: white;
+            color: var(--text-main);
+            pointer-events: none; /* Allow interaction with elements behind the header */
+            transition: all 0.3s ease;
+        }
+        .masthead > * {
+            pointer-events: auto; /* Enable interaction for logo and text */
         }
 
         .glan-tag {
@@ -258,7 +262,7 @@
             .cover-title { font-size: 2.2rem; margin-bottom: 0.5rem; }
             .issue-number { font-size: 6rem; top: 1rem; left: 0.5rem; }
             .gallery-item { height: 35vh; } /* Slightly smaller for mobile height */
-            .masthead { padding: 1rem; background: rgba(248, 247, 242, 0.9); backdrop-filter: blur(10px); color: black; mix-blend-mode: normal; }
+            .masthead { padding: 1.5rem 1rem; }
             .masthead h1 { font-size: 1.1rem; }
             .tech-highlights { max-width: 100%; margin-top: 1.5rem; padding-top: 1rem; }
             .glan-tag { font-size: 0.65rem; padding: 0.15rem 0.6rem; }
@@ -310,9 +314,8 @@
             <h1 class="serif text-3xl font-bold italic">Monthly Good42</h1>
             <p class="text-[10px] uppercase tracking-[0.3em]">Developer Portfolio Archive</p>
         </a>
-        <div class="text-right text-black">
-            <p class="text-sm font-bold">VOL. 2026</p>
-            <p class="text-[10px] opacity-70">MARCH ISSUE</p>
+        <div class="text-right">
+            <p class="text-sm font-bold pt-2">VOL. 2026</p>
         </div>
     </nav>
 
