@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Good42 - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <style>
+        :root {
+            --bg-magazine: #f8f7f2;
+            --accent-red: #d32f2f;
+            --text-main: #1a1a1a;
+        }
+        body {
+            font-family: "Pretendard", "Inter", sans-serif;
+            background-color: var(--bg-magazine);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+        .serif { font-family: "Playfair Display", serif; }
+
+        /* Magazine Snap Scroll */
+        .magazine-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+        }
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Cover Elements */
+        .issue-number {
+            font-size: 15rem;
+            font-weight: 900;
+            line-height: 0.8;
+            opacity: 0.05;
+            position: absolute;
+            left: -2rem;
+            top: 2rem;
+            z-index: 0;
+            user-select: none;
+        }
+
+        .cover-title {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .masthead {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            mix-blend-mode: exclusion;
+            color: white;
+        }
+
+        .glan-tag {
+            background: var(--accent-red);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .btn-explorer {
+            pointer-events: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 700;
+            font-size: 0.8125rem;
+            letter-spacing: 0.1em;
+            padding: 0.75rem 1.75rem;
+            border: 1px solid var(--text-main);
+            transition: all 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+            text-transform: uppercase;
+        }
+        .btn-explorer:hover {
+            background-color: var(--text-main);
+            color: white;
+            padding-right: 2.25rem;
+        }
+
+        .tech-highlights {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            max-width: 320px;
+        }
+        .tech-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            opacity: 0.4;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        .feature-item {
+            font-size: 0.8125rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            opacity: 0.7;
+            font-weight: 500;
+        }
+        .feature-item::before {
+            content: "";
+            width: 3px;
+            height: 3px;
+            background: var(--accent-red);
+            border-radius: 50%;
+        }
+
+        /* Single Photo Container */
+        .cover-photo-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 9 / 19.5;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+        }
+        .cover-photo-container:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        .cover-photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .click-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+        .cover-photo-container:hover .click-hint {
+            opacity: 1;
+        }
+
+        /* Inline Gallery Styles */
+        .gallery-container {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Hide scrollbar for clean look */
+            scroll-snap-type: x mandatory;
+            padding: 2rem 0;
+            cursor: grab;
+        }
+        .gallery-container::-webkit-scrollbar { display: none; }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            padding-left: 0; /* Align with column */
+        }
+
+        .gallery-item {
+            flex: 0 0 auto;
+            height: 60vh;
+            scroll-snap-align: start;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+            overflow: hidden;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        .gallery-item img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .scroll-hint {
+            font-size: 0.75rem;
+            opacity: 0.3;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .scroll-hint::after {
+            content: "";
+            height: 1px;
+            width: 50px;
+            background: currentColor;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .cover-title { font-size: 3rem; }
+            .issue-number { font-size: 10rem; }
+            .cover-photo-container { max-width: 300px; }
+            .lightbox-nav { font-size: 2rem; }
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        section.active .fade-up {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        section.active .fade-delay-1 { transition-delay: 0.2s; }
+        section.active .fade-delay-2 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+    <nav class="masthead">
+        <div>
+            <h1 class="serif text-3xl font-bold italic">Monthly Good42</h1>
+            <p class="text-[10px] uppercase tracking-[0.3em]">Developer Portfolio Archive</p>
+        </div>
+        <div class="text-right text-black">
+            <p class="text-sm font-bold">VOL. 2026</p>
+            <p class="text-[10px] opacity-70">MARCH ISSUE</p>
+        </div>
+    </nav>
+
+    <div class="magazine-container">
+
+        <!-- Issue 03: Scoreboard -->
+        <section id="issue-03">
+            <div class="issue-number serif">03</div>
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
+                <div class="w-full md:w-1/3 space-y-4 text-right md:text-left">
+                    <div class="glan-tag fade-up" style="background-color: #2e7d32;">Sports</div>
+                    <h2 class="cover-title fade-up fade-delay-1 serif italic">Scoreboard</h2>
+                    <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black md:ml-0 ml-auto">
+                        경기의 열기를 어디서나 함께.<br>
+                        실시간 공유 점수판.
+                    </p>
+                    <div class="pt-8 fade-up fade-delay-2">
+                        <span class="btn-explorer opacity-50 cursor-default border-dashed">COMING SOON</span>
+                    </div>
+                    <div class="tech-highlights fade-up fade-delay-2">
+                        <span class="tech-label">Technical Spread</span>
+                        <div class="feature-item">Firebase 실시간 데이터 동기화</div>
+                        <div class="feature-item">경기 점수 및 세트 스코어 관리</div>
+                        <div class="feature-item">팀 정보 커스텀 및 다양한 보드 테마 지원</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                    <div class="gallery-container" id="gallery-scoreboard">
+                        <div class="gallery-track">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                    <div class="flex justify-end md:justify-start">
+                        <div class="scroll-hint">Explore the spread</div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                        <img src="assets/images/scoreboard-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Issue 02: Pomotime -->
+        <section id="issue-02" class="active">
+            <div class="issue-number serif">02</div>
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
+                <div class="w-full md:w-1/3 space-y-4">
+                    <div class="glan-tag fade-up">Productivity</div>
+                    <h2 class="cover-title fade-up fade-delay-1 serif italic">Pomotime</h2>
+                    <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
+                        집중을 위한 가장 심플하고 따뜻한 도구.<br>
+                        뽀모도로 테크닉을 당신의 책상 위로.
+                    </p>
+                    <div class="pt-8 fade-up fade-delay-2">
+                        <a href="https://apps.apple.com/kr/app/pomotime-focus-timer/id6758915328" target="_blank" class="btn-explorer">VIEW ON APP STORE →</a>
+                    </div>
+                    <div class="tech-highlights fade-up fade-delay-2">
+                        <span class="tech-label">Technical Spread</span>
+                        <div class="feature-item">집중을 위한 미니멀 뽀모도로 타이머</div>
+                        <div class="feature-item">백그라운드 푸시 알림</div>
+                        <div class="feature-item">깔끔하고 직관적인 UI/UX</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                    <div class="gallery-container" id="gallery-pomotime">
+                        <div class="gallery-track">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                    <div class="scroll-hint">Explore the spread</div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                        <img src="assets/images/pomotime-icon.png" class="w-16 h-16 rounded-2xl " alt="Icon">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Issue 01: Exchange Diary -->
+        <section id="issue-01">
+            <div class="issue-number serif">01</div>
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
+                <div class="w-full md:w-1/3 space-y-4">
+                    <div class="glan-tag fade-up" style="background-color: #1976d2;">Social</div>
+                    <h2 class="cover-title fade-up fade-delay-1 serif italic">Shared Diary</h2>
+                    <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
+                        소중한 사람과 함께 쓰는 일기.<br>
+                        우리의 오늘을 기록으로 엮다.
+                    </p>
+                    <div class="pt-8 fade-up fade-delay-2">
+                        <a href="https://apps.apple.com/kr/app/%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0/id6474495000" target="_blank" class="btn-explorer">VIEW ON APP STORE →</a>
+                    </div>
+                    <div class="tech-highlights fade-up fade-delay-2">
+                        <span class="tech-label">Technical Spread</span>
+                        <div class="feature-item">함께 쓰는 클라우드 공유 일기</div>
+                        <div class="feature-item">이미지 업로드 및 댓글 알림</div>
+                        <div class="feature-item">가족, 연인을 위한 프라이빗 소셜 공간</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                    <div class="gallery-container" id="gallery-diary">
+                        <div class="gallery-track">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                    <div class="scroll-hint">Explore the spread</div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                        <img src="assets/images/diary-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Issue -->
+        <footer class="h-[50vh] scroll-snap-align-start flex items-center justify-center bg-zinc-900 text-white w-full">
+            <div class="text-center space-y-6">
+                <h2 class="serif italic text-4xl">Good42.</h2>
+                <p class="opacity-50 text-sm tracking-widest uppercase">Thank you for reading</p>
+                <div class="pt-8">
+                    <a href="index.html" class="text-xs border border-white/20 px-6 py-2 rounded-full hover:bg-white hover:text-zinc-900 transition">BACK TO HOME</a>
+                </div>
+                <p class="text-[10px] opacity-30 pt-12">© 2026 INHO SHIN. ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Assets Data
+        const galleryData = {
+            pomotime: [
+                'assets/screenshots/pomotime/0.jpg',
+                'assets/screenshots/pomotime/1.jpg',
+                'assets/screenshots/pomotime/2.jpg',
+                'assets/screenshots/pomotime/3.jpg',
+                'assets/screenshots/pomotime/4.jpg',
+                'assets/screenshots/pomotime/5.jpg',
+                'assets/screenshots/pomotime/6.jpg',
+                'assets/screenshots/pomotime/7.jpg',
+                'assets/screenshots/pomotime/8.jpg'
+            ],
+            scoreboard: [
+                'assets/screenshots/scoreboard/1.png',
+                'assets/screenshots/scoreboard/2.png',
+                'assets/screenshots/scoreboard/3.png',
+                'assets/screenshots/scoreboard/4.png',
+                'assets/screenshots/scoreboard/5.png',
+                'assets/screenshots/scoreboard/6.png',
+                'assets/screenshots/scoreboard/7.png',
+            ],
+            diary: [
+                'assets/screenshots/diary/1.png',
+                'assets/screenshots/diary/2.png',
+                'assets/screenshots/diary/3.png',
+                'assets/screenshots/diary/4.png',
+                'assets/screenshots/diary/5.png',
+            ]
+        };
+
+        // Populate Inline Galleries
+        function initGalleries() {
+            Object.keys(galleryData).forEach(key => {
+                const container = document.querySelector(`#gallery-${key} .gallery-track`);
+                if (!container) return;
+
+                galleryData[key].forEach(src => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Screen';
+                    img.loading = 'lazy';
+                    item.appendChild(img);
+                    container.appendChild(item);
+                });
+
+                // Add mouse drag scroll for desktop
+                const scrollContainer = document.querySelector(`#gallery-${key}`);
+                let isDown = false;
+                let scrollLeft;
+                let startX;
+
+                scrollContainer.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    scrollContainer.classList.add('active');
+                    startX = e.pageX - scrollContainer.offsetLeft;
+                    scrollLeft = scrollContainer.scrollLeft;
+                });
+                scrollContainer.addEventListener('mouseleave', () => {
+                    isDown = false;
+                });
+                scrollContainer.addEventListener('mouseup', () => {
+                    isDown = false;
+                });
+                scrollContainer.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollContainer.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    scrollContainer.scrollLeft = scrollLeft - walk;
+                });
+            });
+        }
+
+        // Intersection Observer for Section Animations
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, observerOptions);
+        sections.forEach(section => observer.observe(section));
+
+        // Initialize on load
+        window.onload = initGalleries;
+    </script>
+</body>
+</html>
