@@ -24,23 +24,29 @@
 
         /* Magazine Snap Scroll */
         .magazine-container {
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
+            height: auto;
+            overflow-y: visible;
+        }
+        @media (min-width: 768px) {
+            .magazine-container {
+                height: 100vh;
+                overflow-y: scroll;
+                scroll-snap-type: y mandatory;
+            }
         }
         section {
             min-height: 100vh;
-            height: auto;
-            scroll-snap-align: start;
+            width: 100%;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5rem 0; /* Adjusted for mobile */
+            padding: 6rem 1rem 4rem; /* More space for masthead on mobile */
         }
         @media (min-width: 768px) {
             section {
                 height: 100vh;
+                scroll-snap-align: start;
                 padding: 0;
             }
         }
@@ -186,14 +192,14 @@
         /* Inline Gallery Styles */
         .gallery-container {
             width: 100%;
-            overflow-x: scroll;
+            overflow-x: auto;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scroll-snap-type: x mandatory;
             -webkit-scroll-snap-type: x mandatory;
-            padding: 1.5rem 0;
+            padding: 1rem 0;
             cursor: grab;
-            touch-action: pan-y;
+            touch-action: pan-x pan-y;
             scrollbar-width: none;
         }
         .gallery-container::-webkit-scrollbar { display: none; }
@@ -202,7 +208,6 @@
             display: flex;
             gap: 1.5rem;
             padding-left: 0;
-            width: max-content;
         }
 
         .gallery-item {
@@ -220,7 +225,6 @@
         .gallery-item img {
             height: 100%;
             width: auto;
-            min-width: 200px; /* Help Safari calculate scroll area early */
             object-fit: contain;
             user-select: none;
             -webkit-user-drag: none;
@@ -251,13 +255,13 @@
         @media (max-width: 768px) {
             .cover-title { font-size: 2.2rem; margin-bottom: 0.5rem; }
             .issue-number { font-size: 6rem; top: 0.5rem; left: 0.5rem; }
-            .gallery-item { height: 40vh; }
-            .masthead { padding: 1.25rem 1rem; }
+            .gallery-item { height: 35vh; } /* Slightly smaller for mobile height */
+            .masthead { padding: 1rem; background: rgba(248, 247, 242, 0.9); backdrop-filter: blur(10px); color: black; mix-blend-mode: normal; }
             .masthead h1 { font-size: 1.1rem; }
             .tech-highlights { max-width: 100%; margin-top: 1.5rem; padding-top: 1rem; }
-            section { padding: 5rem 0; }
             .glan-tag { font-size: 0.65rem; padding: 0.15rem 0.6rem; }
             .feature-item { font-size: 0.75rem; margin-bottom: 0.4rem; }
+            .gallery-container { touch-action: auto; } /* Fix for mobile drag */
         }
 
         /* Animations */
