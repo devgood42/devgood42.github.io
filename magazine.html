@@ -186,21 +186,23 @@
         /* Inline Gallery Styles */
         .gallery-container {
             width: 100%;
-            overflow-x: auto;
+            overflow-x: scroll;
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Hide scrollbar for clean look */
             scroll-snap-type: x mandatory;
+            -webkit-scroll-snap-type: x mandatory;
             padding: 1.5rem 0;
             cursor: grab;
-            touch-action: pan-y; /* Allow vertical scroll through gallery */
+            touch-action: pan-y;
+            scrollbar-width: none;
         }
         .gallery-container::-webkit-scrollbar { display: none; }
 
         .gallery-track {
             display: flex;
             gap: 1.5rem;
-            padding-left: 0; /* Align with column */
+            padding-left: 0;
+            width: max-content;
         }
 
         .gallery-item {
@@ -218,7 +220,10 @@
         .gallery-item img {
             height: 100%;
             width: auto;
+            min-width: 200px; /* Help Safari calculate scroll area early */
             object-fit: contain;
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         .scroll-hint {
@@ -496,8 +501,12 @@
         }, observerOptions);
         sections.forEach(section => observer.observe(section));
 
-        // Initialize on load
-        window.onload = initGalleries;
+        // Initialize as soon as possible
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGalleries);
+        } else {
+            initGalleries();
+        }
     </script>
 </body>
 </html>
