@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good42 Apps - Studio Concept</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #151515;
+        --muted: #66615b;
+        --line: #ded8cf;
+        --paper: #f6f0e7;
+        --surface: #fffaf2;
+        --green: #325f53;
+        --rose: #d95d65;
+        --blue: #386fa4;
+        --yellow: #f2c14e;
+        --shadow: 0 24px 80px rgba(40, 32, 23, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(21, 21, 21, 0.04) 1px, transparent 1px)
+            0 0 / 72px 72px,
+          linear-gradient(rgba(21, 21, 21, 0.035) 1px, transparent 1px) 0 0 /
+            72px 72px,
+          var(--paper);
+        color: var(--ink);
+        font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(21, 21, 21, 0.12);
+        background: rgba(246, 240, 231, 0.86);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 900;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        background: var(--yellow);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 700;
+      }
+
+      .nav a,
+      .lang-button {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .nav a:hover,
+      .lang-button:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        min-height: calc(100vh - 72px);
+        display: grid;
+        align-items: center;
+        padding: 56px 0 72px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
+        gap: clamp(32px, 6vw, 84px);
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        color: var(--green);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 34px;
+        height: 2px;
+        background: currentColor;
+      }
+
+      .hero h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(3.9rem, 10vw, 8.8rem);
+        font-weight: 950;
+        line-height: 0.86;
+      }
+
+      .hero h1 span {
+        display: block;
+      }
+
+      .hero-copy {
+        max-width: 600px;
+        margin: 28px 0 0;
+        color: #393530;
+        font-size: clamp(1.08rem, 2vw, 1.42rem);
+        font-weight: 650;
+        line-height: 1.5;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        background: var(--ink);
+        color: white;
+        font-weight: 900;
+        box-shadow: 5px 5px 0 rgba(21, 21, 21, 0.18);
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 7px 7px 0 rgba(21, 21, 21, 0.22);
+      }
+
+      .button.secondary {
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .showcase-stage {
+        position: relative;
+        min-height: 610px;
+      }
+
+      .poster-card {
+        position: absolute;
+        inset: auto 0 0 auto;
+        width: min(430px, 76vw);
+        padding: 18px;
+        border: 1px solid var(--ink);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .poster-card.primary {
+        left: 0;
+        right: auto;
+        top: 22px;
+        bottom: auto;
+        rotate: -3deg;
+      }
+
+      .poster-card.secondary {
+        right: 16px;
+        bottom: 26px;
+        rotate: 4deg;
+      }
+
+      .phone-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        align-items: end;
+      }
+
+      .phone-shot {
+        overflow: hidden;
+        border: 8px solid #161616;
+        border-radius: 24px;
+        background: #161616;
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+      }
+
+      .phone-shot img {
+        width: 100%;
+        aspect-ratio: 9 / 19.5;
+        object-fit: cover;
+      }
+
+      .poster-label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .issue-row {
+        border-top: 1px solid var(--line);
+        padding: 92px 0;
+      }
+
+      .section-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 0.72fr) minmax(260px, 0.28fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4.5rem);
+        line-height: 0.95;
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .work-card {
+        display: grid;
+        min-height: 520px;
+        border: 1px solid var(--ink);
+        background: var(--surface);
+        overflow: hidden;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease;
+      }
+
+      .work-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 8px 8px 0 rgba(21, 21, 21, 0.16);
+      }
+
+      .work-media {
+        display: grid;
+        place-items: center;
+        min-height: 330px;
+        padding: 24px;
+      }
+
+      .work-media.rose {
+        background: #f7d8da;
+      }
+
+      .work-media.indigo {
+        background: #dce2ff;
+      }
+
+      .work-media.green {
+        background: #d8eadf;
+      }
+
+      .work-media.red {
+        background: #ffd9cd;
+      }
+
+      .mini-phone {
+        width: min(172px, 70%);
+        overflow: hidden;
+        border: 9px solid #171717;
+        border-radius: 28px;
+        background: #171717;
+        box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25);
+      }
+
+      .mini-phone img {
+        aspect-ratio: 9 / 19.5;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .work-body {
+        display: grid;
+        gap: 16px;
+        padding: 20px;
+        align-content: start;
+      }
+
+      .app-title-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .app-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.14);
+      }
+
+      .work-card h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        line-height: 1.1;
+      }
+
+      .work-card p {
+        margin: 0;
+        color: #514c46;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        border: 1px solid rgba(21, 21, 21, 0.18);
+        padding: 6px 9px;
+        background: rgba(255, 255, 255, 0.52);
+        color: #4c4740;
+        font-size: 0.76rem;
+        font-weight: 850;
+      }
+
+      .feature-band {
+        border-top: 1px solid var(--line);
+        padding: 88px 0;
+      }
+
+      .feature-layout {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.34fr) minmax(0, 0.66fr);
+        gap: 36px;
+        align-items: start;
+      }
+
+      .feature-copy {
+        position: sticky;
+        top: 108px;
+      }
+
+      .feature-copy h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 4.1rem);
+        line-height: 0.98;
+      }
+
+      .feature-copy p {
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      .case-list {
+        display: grid;
+        gap: 18px;
+      }
+
+      .case-item {
+        display: grid;
+        grid-template-columns: 88px minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: center;
+        min-height: 128px;
+        padding: 18px;
+        border: 1px solid var(--ink);
+        background: var(--surface);
+      }
+
+      .case-number {
+        color: var(--rose);
+        font-size: 2.8rem;
+        font-weight: 950;
+        line-height: 0.9;
+      }
+
+      .case-item h3 {
+        margin: 0 0 8px;
+        font-size: 1.15rem;
+      }
+
+      .case-item p {
+        margin: 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.5;
+      }
+
+      .case-link {
+        display: grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        background: var(--yellow);
+        font-weight: 950;
+      }
+
+      .archive {
+        padding: 80px 0 48px;
+        border-top: 1px solid var(--line);
+      }
+
+      .archive-card {
+        display: grid;
+        grid-template-columns: 140px minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: center;
+        padding: 24px;
+        border: 1px solid var(--ink);
+        background: #232323;
+        color: white;
+      }
+
+      .archive-card img {
+        width: 96px;
+        border-radius: 24px;
+      }
+
+      .archive-card p {
+        margin: 8px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 600;
+      }
+
+      footer {
+        padding: 36px 0 52px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 650;
+      }
+
+      [lang="ko"] :lang(en) {
+        display: none;
+      }
+
+      [lang="en"] :lang(ko) {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid,
+        .section-heading,
+        .feature-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .showcase-stage {
+          min-height: 560px;
+        }
+
+        .poster-card.secondary {
+          right: 0;
+        }
+
+        .work-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .feature-copy {
+          position: static;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 28px, 1180px);
+        }
+
+        .topbar-inner {
+          min-height: 64px;
+        }
+
+        .nav a {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 40px;
+        }
+
+        .showcase-stage {
+          min-height: 440px;
+        }
+
+        .poster-card {
+          width: 82vw;
+          padding: 12px;
+        }
+
+        .poster-card.primary {
+          top: 0;
+        }
+
+        .poster-card.secondary {
+          bottom: 8px;
+        }
+
+        .phone-shot {
+          border-width: 5px;
+          border-radius: 17px;
+        }
+
+        .work-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .work-card {
+          min-height: 0;
+        }
+
+        .case-item,
+        .archive-card {
+          grid-template-columns: 1fr;
+        }
+
+        .case-link {
+          justify-self: start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Good42 home">
+          <span class="brand-mark">42</span>
+          <span>Good42</span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <a href="#apps">
+            <span lang="ko">앱</span>
+            <span lang="en">Apps</span>
+          </a>
+          <a href="#stories">
+            <span lang="ko">작업 노트</span>
+            <span lang="en">Notes</span>
+          </a>
+          <a href="magazine.html">Monthly</a>
+          <button class="lang-button" type="button" onclick="toggleLanguage()">
+            <span lang="ko">English</span>
+            <span lang="en">한국어</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <div class="eyebrow">Independent App Studio</div>
+            <h1>
+              <span>Good</span>
+              <span>Things</span>
+              <span>For Daily Life.</span>
+            </h1>
+            <p class="hero-copy">
+              <span lang="ko">
+                Good42는 일상에서 자주 마주치는 작은 불편함을 앱으로 풀어보는
+                개인 프로젝트입니다. 같이 사는 집, 기록하는 하루, 집중하는 시간,
+                함께 보는 경기처럼 익숙한 순간을 조금 더 편하게 만들고 있습니다.
+              </span>
+              <span lang="en">
+                Good42 is an independent app studio shaping small daily
+                frictions into simple, useful products for home, records, focus,
+                and shared moments.
+              </span>
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#apps">
+                <span lang="ko">작업물 보기</span>
+                <span lang="en">View Work</span>
+              </a>
+              <a class="button secondary" href="magazine.html">
+                <span lang="ko">월간 에디션</span>
+                <span lang="en">Monthly Edition</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="showcase-stage" aria-label="Good42 app preview collage">
+            <article class="poster-card primary">
+              <div class="phone-strip">
+                <div class="phone-shot">
+                  <img src="assets/screenshots/ooring.png" alt="ooring app screenshot" />
+                </div>
+                <div class="phone-shot">
+                  <img src="assets/screenshots/report.png" alt="Re:Post app screenshot" />
+                </div>
+                <div class="phone-shot">
+                  <img src="assets/screenshots/scoreboard.png" alt="Scoreboard app screenshot" />
+                </div>
+              </div>
+              <div class="poster-label">
+                <span>Launched Apps</span>
+                <span>2026</span>
+              </div>
+            </article>
+
+            <article class="poster-card secondary">
+              <div class="phone-strip">
+                <div class="phone-shot">
+                  <img src="assets/screenshots/pomotime.png" alt="Pomotime app screenshot" />
+                </div>
+                <div class="phone-shot">
+                  <img src="assets/screenshots/ooring/2.png" alt="ooring detail screenshot" />
+                </div>
+                <div class="phone-shot">
+                  <img src="assets/screenshots/repost/3.png" alt="Re:Post detail screenshot" />
+                </div>
+              </div>
+              <div class="poster-label">
+                <span>Mobile First</span>
+                <span>iOS / Android</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="issue-row" id="apps">
+        <div class="shell">
+          <div class="section-heading">
+            <h2>
+              <span lang="ko">만들고 출시한 앱</span>
+              <span lang="en">Released Apps</span>
+            </h2>
+            <p>
+              <span lang="ko">
+                먼저 앱 화면을 보여주고, 어떤 용도로 만든 앱인지 짧게 읽을 수
+                있게 정리했습니다.
+              </span>
+              <span lang="en">
+                A product-card layout that puts screenshots first and keeps the
+                story easy to scan.
+              </span>
+            </p>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card">
+              <div class="work-media rose">
+                <div class="mini-phone">
+                  <img src="assets/screenshots/ooring.png" alt="ooring screenshot" />
+                </div>
+              </div>
+              <div class="work-body">
+                <div class="app-title-row">
+                  <img class="app-icon" src="assets/images/ooring-icon.png" alt="ooring icon" />
+                  <h3>ooring</h3>
+                </div>
+                <p>
+                  <span lang="ko">함께 사는 사람들의 집안일 완료와 고마움을 연결하는 가사 알림 앱.</span>
+                  <span lang="en">A chore notification app for people who share a home.</span>
+                </p>
+                <div class="tags">
+                  <span class="tag">Lifestyle</span>
+                  <span class="tag">Invite Code</span>
+                  <span class="tag">Push</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <div class="work-media indigo">
+                <div class="mini-phone">
+                  <img src="assets/screenshots/report.png" alt="Re:Post screenshot" />
+                </div>
+              </div>
+              <div class="work-body">
+                <div class="app-title-row">
+                  <img class="app-icon" src="assets/images/report.png" alt="Re:Post icon" />
+                  <h3>Re:Post</h3>
+                </div>
+                <p>
+                  <span lang="ko">일기, 메모, 히트맵으로 기록의 흐름을 다시 보는 로컬 기록 앱.</span>
+                  <span lang="en">A diary and memo app that makes daily records visible.</span>
+                </p>
+                <div class="tags">
+                  <span class="tag">Diary</span>
+                  <span class="tag">Heatmap</span>
+                  <span class="tag">Backup</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <div class="work-media green">
+                <div class="mini-phone">
+                  <img src="assets/screenshots/scoreboard.png" alt="Scoreboard screenshot" />
+                </div>
+              </div>
+              <div class="work-body">
+                <div class="app-title-row">
+                  <img class="app-icon" src="assets/images/scoreboard-icon.png" alt="Scoreboard icon" />
+                  <h3>Scoreboard</h3>
+                </div>
+                <p>
+                  <span lang="ko">탁구와 배드민턴 경기 점수를 실시간으로 기록하고 공유하는 점수판.</span>
+                  <span lang="en">A live scoreboard for sharing match scores in real time.</span>
+                </p>
+                <div class="tags">
+                  <span class="tag">Sports</span>
+                  <span class="tag">Realtime</span>
+                  <span class="tag">QR</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <div class="work-media red">
+                <div class="mini-phone">
+                  <img src="assets/screenshots/pomotime.png" alt="Pomotime screenshot" />
+                </div>
+              </div>
+              <div class="work-body">
+                <div class="app-title-row">
+                  <img class="app-icon" src="assets/images/pomotime-icon.png" alt="Pomotime icon" />
+                  <h3>Pomotime</h3>
+                </div>
+                <p>
+                  <span lang="ko">복잡한 설정을 줄이고 집중과 휴식을 빠르게 시작하는 뽀모도로 타이머.</span>
+                  <span lang="en">A minimal Pomodoro timer for starting focus quickly.</span>
+                </p>
+                <div class="tags">
+                  <span class="tag">Focus</span>
+                  <span class="tag">Timer</span>
+                  <span class="tag">Minimal</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-band" id="stories">
+        <div class="shell feature-layout">
+          <div class="feature-copy">
+            <div class="eyebrow">Build Notes</div>
+            <h2>
+              <span lang="ko">작게 시작해서, 실제로 쓰는 앱까지.</span>
+              <span lang="en">Different problems, same care.</span>
+            </h2>
+            <p>
+              <span lang="ko">
+                단순히 앱 이름만 나열하기보다, 왜 만들었고 어떤 식으로 풀었는지
+                짧게 볼 수 있게 정리했습니다.
+              </span>
+              <span lang="en">
+                This section turns the portfolio from a list into short product
+                stories.
+              </span>
+            </p>
+          </div>
+
+          <div class="case-list">
+            <a class="case-item" href="magazine.html#issue-04">
+              <strong class="case-number">04</strong>
+              <div>
+                <h3>ooring</h3>
+                <p>
+                  <span lang="ko">초대 코드, 닉네임 시작, 완료 알림으로 공유 공간의 부담을 줄입니다.</span>
+                  <span lang="en">Invite codes, nickname onboarding, and completion notifications for shared homes.</span>
+                </p>
+              </div>
+              <span class="case-link">→</span>
+            </a>
+
+            <a class="case-item" href="magazine.html#issue-03">
+              <strong class="case-number">03</strong>
+              <div>
+                <h3>Re:Post</h3>
+                <p>
+                  <span lang="ko">기록을 타임라인과 히트맵으로 다시 보여주어 습관의 흐름을 만듭니다.</span>
+                  <span lang="en">Timeline and heatmap views make private records easier to revisit.</span>
+                </p>
+              </div>
+              <span class="case-link">→</span>
+            </a>
+
+            <a class="case-item" href="magazine.html#issue-02">
+              <strong class="case-number">02</strong>
+              <div>
+                <h3>Scoreboard</h3>
+                <p>
+                  <span lang="ko">경기장을 벗어나도 같은 점수판을 볼 수 있게 실시간 동기화합니다.</span>
+                  <span lang="en">Realtime sync keeps every viewer on the same scoreboard.</span>
+                </p>
+              </div>
+              <span class="case-link">→</span>
+            </a>
+
+            <a class="case-item" href="magazine.html#issue-01">
+              <strong class="case-number">01</strong>
+              <div>
+                <h3>Pomotime</h3>
+                <p>
+                  <span lang="ko">한눈에 이해되는 집중/휴식 상태로 작업 흐름을 방해하지 않습니다.</span>
+                  <span lang="en">Clear focus and break states keep the timer out of the way.</span>
+                </p>
+              </div>
+              <span class="case-link">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="archive">
+        <div class="shell">
+          <a class="archive-card" href="magazine.html#archive-diary">
+            <img src="assets/images/diary-icon.png" alt="Shared Diary icon" />
+            <div>
+              <strong>
+                <span lang="ko">Archive: 공유일기</span>
+                <span lang="en">Archive: Shared Diary</span>
+              </strong>
+              <p>
+                <span lang="ko">소중한 사람과 함께 쓰는 일기. 예전에 만들었던 앱도 함께 남겨두었습니다.</span>
+                <span lang="en">A past project for writing a diary with someone close.</span>
+              </p>
+            </div>
+            <span class="case-link">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">© 2026 INHO SHIN (Good42). Concept preview.</div>
+    </footer>
+
+    <script>
+      function setLanguage(lang) {
+        document.documentElement.setAttribute("lang", lang);
+        localStorage.setItem("preferred-language", lang);
+      }
+
+      function toggleLanguage() {
+        const currentLang = document.documentElement.getAttribute("lang");
+        setLanguage(currentLang === "en" ? "ko" : "en");
+      }
+
+      const savedLang = localStorage.getItem("preferred-language");
+      const browserLang = navigator.language.startsWith("ko") ? "ko" : "en";
+      setLanguage(savedLang || browserLang);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Good42 Apps - ooring, Re:Post & More</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      body {
+        font-family: "Pretendard", sans-serif;
+      }
+      .app-card {
+        transition: transform 0.3s ease;
+      }
+      .app-card:hover {
+        transform: translateY(-5px);
+      }
+      [lang="ko"] :lang(en) {
+        display: none;
+      }
+      [lang="en"] :lang(ko) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <!-- Language Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+      <button
+        onclick="toggleLanguage()"
+        class="bg-white/80 backdrop-blur-sm border border-gray-200 px-3 py-1.5 rounded-full shadow-sm text-sm font-medium hover:bg-gray-50 transition"
+      >
+        <span lang="en">🇰🇷 한국어</span>
+        <span lang="ko">🇺🇸 English</span>
+      </button>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="py-16 px-4 text-center bg-white border-b border-gray-100">
+      <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+        <span lang="ko">안녕하세요, 좋은사이(Good42)입니다.</span>
+        <span lang="en">Hello, we are Good42.</span>
+      </h1>
+      <p class="mt-4 text-lg text-gray-600">
+        <span lang="ko"
+          >일상에 가치를 더하는 심플하고 따뜻한 앱을 만듭니다.</span
+        >
+        <span lang="en"
+          >We create simple and warm apps that add value to your daily
+          life.</span
+        >
+      </p>
+      <div class="mt-8">
+        <a href="magazine.html" class="inline-flex items-center gap-2 group text-sm font-bold tracking-widest uppercase border-b-2 border-black pb-1 hover:text-red-600 hover:border-red-600 transition-all">
+          <span lang="ko">2026 월간 에디션 보기</span>
+          <span lang="en">View 2026 Monthly Edition</span>
+          <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto py-16 px-4 space-y-24">
+      <!-- ooring Section -->
+      <section class="flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-3 py-1 bg-rose-100 text-rose-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">라이프스타일</span>
+            <span lang="en">Lifestyle</span>
+          </div>
+          <h2 class="text-3xl font-bold">ooring</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">함께 사는 우리를 위한 가사 알림 앱</span>
+            <span lang="en">Chore notification app for people living together</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p lang="ko">
+              가족, 커플, 룸메이트와 공간을 만들고 집안일을 아이콘으로 등록하세요.
+              완료하면 구성원에게 알림이 가고, 받은 사람은 쓰담쓰담으로 고마움을 표현할 수 있어요.
+            </p>
+            <p lang="en">
+              Create a shared space with family, couples, or roommates and log chores with icons.
+              When done, members get notified and can send a cheer to say thanks.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li lang="ko">
+                🔑 <strong>로그인 없이</strong> 닉네임으로 바로 시작
+              </li>
+              <li lang="en">
+                🔑 Start instantly with a <strong>nickname — no login required</strong>
+              </li>
+              <li lang="ko">
+                🏠 <strong>초대 코드</strong>로 가족·커플·룸메이트와 공간 공유
+              </li>
+              <li lang="en">
+                🏠 Share a space with <strong>invite codes</strong>
+              </li>
+              <li lang="ko">
+                👏 완료 시 <strong>쓰담쓰담</strong> 알림으로 고마움 전달
+              </li>
+              <li lang="en">
+                👏 Send a <strong>cheer</strong> when someone finishes a chore
+              </li>
+              <li lang="ko">
+                🌍 <strong>한국어·영어·일본어</strong> 3개 언어 지원
+              </li>
+              <li lang="en">
+                🌍 Available in <strong>Korean, English & Japanese</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-3">
+            <a
+              lang="ko"
+              href="https://apps.apple.com/kr/app/%EC%9A%B0%EB%A7%81/id6764290501"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span>App Store</span>
+            </a>
+            <a
+              lang="en"
+              href="https://apps.apple.com/us/app/ooring/id6764290501"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span>App Store</span>
+            </a>
+          </div>
+        </div>
+        <a href="magazine.html#issue-04" class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto block">
+          <div
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
+            ></div>
+            <img
+              src="assets/images/ooring-icon.png"
+              alt="ooring Icon"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
+              onerror="this.src = 'https://via.placeholder.com/1024?text=ooring+Icon'"
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">ooring</p>
+            </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/ooring.png"
+              alt="ooring Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </a>
+      </section>
+
+      <hr class="border-gray-100" />
+
+      <!-- Re:Post Section -->
+      <section class="flex flex-col md:flex-row-reverse items-center gap-16">
+        <div class="flex-1 space-y-6 text-right md:text-left">
+          <div
+            class="inline-block px-3 py-1 bg-indigo-100 text-indigo-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">라이프스타일</span>
+            <span lang="en">Lifestyle</span>
+          </div>
+          <h2 class="text-3xl font-bold">Re:Post</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">기록의 가치를 더하는 일기 & 메모</span>
+            <span lang="en">A diary & memo that adds value to records</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p lang="ko">
+              단순한 기록을 넘어, 나의 하루를 아름다운 타임라인과 히트맵으로 관리하세요.
+              매일의 성장을 시각적으로 확인하며 기록의 즐거움을 느껴보세요.
+            </p>
+            <p lang="en">
+              Beyond simple records, manage your day with a beautiful timeline and heatmap.
+              Experience the joy of recording while visually tracking your daily growth.
+            </p>
+            <ul class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2">
+              <li lang="ko">
+                📅 <strong>타임라인 일기</strong>: 감각적인 이미지 공유와 태그 관리
+              </li>
+              <li lang="en">
+                📅 <strong>Timeline Diary</strong>: Stylish image sharing and tag management
+              </li>
+              <li lang="ko">
+                📝 <strong>자유로운 메모</strong>: 접고 펴는 스마트한 로컬 메모장
+              </li>
+              <li lang="en">
+                📝 <strong>Versatile Memos</strong>: Smart local notepad with fold/unfold logic
+              </li>
+              <li lang="ko">
+                🔥 <strong>연간 히트맵</strong>: 나의 기록 여정을 시각화한 성장 데이터
+              </li>
+              <li lang="en">
+                🔥 <strong>Annual Heatmap</strong>: Growth data visualizing your recording journey
+              </li>
+              <li lang="ko">
+                🔒 <strong>보안 및 시스템</strong>: 생체 인증 잠금과 자유로운 데이터 백업
+              </li>
+              <li lang="en">
+                🔒 <strong>Security & System</strong>: Biometric app lock and easy data backup
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-3 justify-end md:justify-start">
+            <a
+              href="https://apps.apple.com/us/app/re-post/id6761127967"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.good42.repost"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-0.5" viewBox="0 0 512 512">
+                <path fill="#00A1F1" d="M25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0c-13 6.8-21.7 19.2-21.7 35.3z"/>
+                <path fill="#FBBC05" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
+                <path fill="#34A853" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+                <path fill="#EA4335" d="M104.6 499l220.7-221.3 60.7 60.7L104.6 512c0 0-0.0-13-0.0-13z"/>
+              </svg>
+              <span class="font-bold">Google Play</span>
+            </a>
+          </div>
+        </div>
+        <a href="magazine.html#issue-03" class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto block">
+          <div
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
+            ></div>
+            <img
+              src="assets/images/report.png"
+              alt="Re:Post Icon"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
+              onerror="this.src = 'https://via.placeholder.com/1024?text=Re:Post+Icon'"
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">Re:Post</p>
+            </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/report.png"
+              alt="Re:Post Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </a>
+      </section>
+
+      <hr class="border-gray-100" />
+
+      <!-- Scoreboard Section -->
+      <section class="flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-3 py-1 bg-green-100 text-green-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">스포츠</span>
+            <span lang="en">Sports</span>
+          </div>
+          <h2 class="text-3xl font-bold">Scoreboard: Live & Share</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">함께 즐기는 실시간 경기 점수판</span>
+            <span lang="en">Real-time scoreboard for everyone</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p lang="ko">
+              탁구, 배드민턴 등 다양한 스포츠의 점수를 실시간으로 기록하고 공유하세요.<br/>
+              실시간으로 어디서든 경기를 함께 즐길 수 있습니다.
+            </p>
+            <p lang="en">
+              Record and share scores for various sports like table tennis and badminton in real-time.
+              Enjoy the match together from anywhere in real-time.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li lang="ko">
+                🏓 <strong>실시간 연동</strong>으로 멀리서도 점수 확인
+              </li>
+              <li lang="en">
+                🏓 Check scores from afar with <strong>real-time synchronization</strong>
+              </li>
+              <li lang="ko">
+                📱 <strong>방 번호, QR코드</strong>를 통한 간편한 점수판 정보 공유
+              </li>
+              <li lang="en">
+                📱 Easy sharing of scoreboard information via <strong>Room Number</strong>
+              </li>
+              <li lang="ko">
+                📊 경기 결과를 <strong>이미지로 저장</strong>하고 공유
+              </li>
+              <li lang="en">
+                📊 <strong>Save and share</strong> match results as images
+              </li>
+              <li lang="ko">
+                🌍 <strong>7개 언어</strong> 지원 및 다국어 환경 제공
+              </li>
+              <li lang="en">
+                🌍 <strong>7 languages</strong> supported for a global experience
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-3">
+            <a
+              href="https://apps.apple.com/us/app/scoreboard-live-share/id6760231692"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.good42.scoreboard"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-0.5" viewBox="0 0 512 512">
+                <path fill="#00A1F1" d="M25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0c-13 6.8-21.7 19.2-21.7 35.3z"/>
+                <path fill="#FBBC05" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
+                <path fill="#34A853" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+                <path fill="#EA4335" d="M104.6 499l220.7-221.3 60.7 60.7L104.6 512c0 0-0.0-13-0.0-13z"/>
+              </svg>
+              <span class="font-bold">Google Play</span>
+            </a>
+          </div>
+        </div>
+        <a href="magazine.html#issue-02" class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto block">
+          <div
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
+            ></div>
+            <img
+              src="assets/images/scoreboard-icon.png"
+              alt="Scoreboard Icon"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
+              onerror="this.src = 'https://via.placeholder.com/1024?text=Scoreboard+Icon'"
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">scoreboard</p>
+            </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/scoreboard.png"
+              alt="Scoreboard Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </a>
+      </section>
+
+      <hr class="border-gray-100" />
+
+      <!-- Pomotime Section -->
+      <section class="flex flex-col md:flex-row-reverse items-center gap-16">
+        <div class="flex-1 space-y-6 text-right md:text-left">
+          <div
+            class="inline-block px-3 py-1 bg-red-100 text-red-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">생산성</span>
+            <span lang="en">Productivity</span>
+          </div>
+          <h2 class="text-3xl font-bold">Pomotime: Focus Timer</h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">집중을 위한 가장 심플한 뽀모도로 타이머</span>
+            <span lang="en">The simplest Pomodoro timer for focus</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p>
+              <span lang="ko">"심플하지만 강력한 집중의 도구, Pomotime"</span>
+              <span lang="en"
+                >"A simple but powerful tool for focus, Pomotime"</span
+              >
+            </p>
+            <p lang="ko">
+              복잡한 설정은 생략하고 오직 '집중'에만 몰입하세요. <br/>효율적인 시간 관리 기법인 뽀모도로 테크닉을 가장 직관적으로 구현했습니다.
+            </p>
+            <p lang="en">
+              Skip complex settings and immerse yourself in "Focus". We've
+              implemented the Pomodoro technique, an efficient time management
+              method, in the most intuitive way.
+            </p>
+            <ul
+              class="list-none md:list-disc list-inside space-y-1 ml-0 md:ml-2"
+            >
+              <li lang="ko">
+                🔥 <strong>불꽃 아이콘</strong>으로 집중 시간을 직관적으로 표시
+              </li>
+              <li lang="en">
+                🔥 Intuitively display focus time with the
+                <strong>Flame icon</strong>
+              </li>
+              <li lang="ko">
+                🌿 <strong>나뭇잎 아이콘</strong>으로 리프레시 시간을 확인
+              </li>
+              <li lang="en">
+                🌿 Check refresh time with the <strong>Leaf icon</strong>
+              </li>
+              <li lang="ko">
+                ✨ 작업에 방해되지 않는 <strong>미니멀 디자인</strong>
+              </li>
+              <li lang="en">
+                ✨ <strong>Minimal design</strong> that doesn't distract from
+                your work
+              </li>
+              <li lang="ko">
+                ⚙️ 내 컨디션에 맞춘 <strong>커스텀 타이머</strong> 설정
+              </li>
+              <li lang="en">
+                ⚙️ <strong>Custom timer</strong> settings tailored to your
+                condition
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-3 justify-end md:justify-start">
+            <a
+              href="https://apps.apple.com/kr/app/pomotime-focus-timer/id6758915328"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-2 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.good42.pomotime"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-gray-200 text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-3 -mt-0.5" viewBox="0 0 512 512">
+                <path fill="#00A1F1" d="M25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0c-13 6.8-21.7 19.2-21.7 35.3z"/>
+                <path fill="#FBBC05" d="M472.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8z"/>
+                <path fill="#34A853" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z"/>
+                <path fill="#EA4335" d="M104.6 499l220.7-221.3 60.7 60.7L104.6 512c0 0-0.0-13-0.0-13z"/>
+              </svg>
+              <span class="font-bold">Google Play</span>
+            </a>
+          </div>
+        </div>
+        <a href="magazine.html#issue-01" class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto block">
+          <div
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
+            ></div>
+            <img
+              src="assets/images/pomotime-icon.png"
+              alt="Pomotime Icon"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
+              onerror="
+                this.src = 'https://via.placeholder.com/1024?text=Pomotime+Icon'
+              "
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">pomotime</p>
+            </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/pomotime.png"
+              alt="Pomotime Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </a>
+      </section>
+
+      <!-- Archive Section Header -->
+      <div class="py-12 flex items-center gap-8">
+        <div class="flex-1 h-px bg-gray-200"></div>
+        <h3 class="text-xs font-bold tracking-widest text-gray-400 uppercase text-center whitespace-nowrap">
+          <span lang="ko">아카이브 (이전 프로젝트)</span>
+          <span lang="en">Archive (Past Projects)</span>
+        </h3>
+        <div class="flex-1 h-px bg-gray-200"></div>
+      </div>
+
+      <!-- 공유일기 Section -->
+      <section class="flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1 space-y-6">
+          <div
+            class="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-sm font-semibold rounded-full"
+          >
+            <span lang="ko">소셜 네트워킹</span>
+            <span lang="en">Social Networking</span>
+          </div>
+          <h2 class="text-3xl font-bold">
+            <span lang="ko">공유일기: 함께 쓰는 일기</span>
+            <span lang="en">Shared Diary: Journaling Together</span>
+          </h2>
+          <p class="text-xl text-gray-600 font-medium">
+            <span lang="ko">소중한 사람과 함께 기록하는 우리만의 세상</span>
+            <span lang="en">Our own world recorded with loved ones</span>
+          </p>
+          <div class="text-gray-600 space-y-4 leading-relaxed">
+            <p lang="ko">
+              당신의 일기장에 소중한 사람을 초대해 보세요. 서로의 기록을 엮어
+              하나의 추억으로 간직해봐요.
+            </p>
+            <p lang="en">
+              Invite your loved ones to your diary. Stitch your records together
+              and keep them as a single memory.
+            </p>
+            <ul class="list-disc list-inside space-y-1 ml-2">
+              <li lang="ko">
+                🏠 <strong>나만의 공간</strong>에서 자유롭게 작성
+              </li>
+              <li lang="en">
+                🏠 Write freely in <strong>your own space</strong>
+              </li>
+              <li lang="ko">
+                👥 가족, 친구, 연인을 초대하여 <strong>함께 쓰는 일기</strong>
+              </li>
+              <li lang="en">
+                👥 <strong>Write together</strong> by inviting family, friends,
+                or partners
+              </li>
+              <li lang="ko">
+                🎁 매일의 작은 이야기를 나누는 <strong>공유의 즐거움</strong>
+              </li>
+              <li lang="en">
+                🎁 <strong>The joy of sharing</strong> everyday little stories
+              </li>
+              <li lang="ko">
+                📦 소중한 기억을 담는 <strong>추억 보물상자</strong>
+              </li>
+              <li lang="en">
+                📦 A <strong>treasure box of memories</strong> containing
+                precious moments
+              </li>
+            </ul>
+          </div>
+          <div class="pt-4">
+            <a
+              href="https://apps.apple.com/kr/app/%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0/id6474495000"
+              target="_blank"
+              class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800 transition shadow-sm"
+            >
+              <svg class="w-5 h-5 mr-2 -mt-1" fill="currentColor" viewBox="0 0 384 512">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+              <span lang="ko">App Store</span>
+              <span lang="en">App Store</span>
+            </a>
+          </div>
+        </div>
+        <a href="magazine.html#archive-diary" class="flex-1 w-full max-w-[280px] text-center group cursor-pointer mx-auto block">
+          <div
+            class="aspect-[9/19.5] bg-white rounded-[3rem] shadow-2xl border-[12px] border-gray-900 flex flex-col items-center justify-center relative overflow-hidden mb-6 mx-auto"
+          >
+            <div
+              class="absolute top-4 w-20 h-1.5 bg-gray-900 rounded-full z-20"
+            ></div>
+            <img
+              src="assets/images/diary-icon.png"
+              alt="공유일기 Icon"
+              class="w-20 h-20 rounded-[1.2rem] shadow-xl mb-4 transition-transform group-hover:scale-110 duration-500"
+              onerror="
+                this.src =
+                  'https://via.placeholder.com/1024?text=%EA%B3%B5%EC%9C%A0%EC%9D%BC%EA%B8%B0+Icon'
+              "
+            />
+            <div class="px-6">
+              <p class="text-gray-400 text-xs">
+                <span lang="ko">공유일기</span>
+                <span lang="en">Shared Diary</span>
+              </p>
+            </div>
+            <!-- Screenshot Overlay -->
+            <img
+              src="assets/screenshots/diary.png"
+              alt="Shared Diary Screenshot"
+              class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+              onerror="this.style.display='none'"
+            />
+          </div>
+        </a>
+      </section>
+    </main>
+
+    <footer class="bg-white border-t border-gray-100 py-12 px-4">
+      <div class="max-w-5xl mx-auto text-center space-y-4">
+        <p class="text-gray-500">
+          © 2026 INHO SHIN (Good42). All rights reserved.
+        </p>
+        <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-gray-400">
+          <a
+            href="https://ninos.notion.site/35098f036780817d9cf4d734ae048750"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="ko"
+          >
+            ooring 개인정보 처리방침
+          </a>
+          <a
+            href="https://ninos.notion.site/ooring-Privacy-Policy-35098f03678081ab9d24db7f0b3dc21f"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="en"
+          >
+            ooring Privacy Policy
+          </a>
+          <a
+            href="https://ninos.notion.site/31c98f0367808013a165cb79e2c08480"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="ko"
+          >
+            Scoreboard 개인정보 처리방침
+          </a>
+          <a
+            href="https://ninos.notion.site/Privacy-Policy-31c98f0367808095bb45c5d4e1eff611"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+            lang="en"
+          >
+            Scoreboard Privacy Policy
+          </a>
+          <a
+            href="https://ninos.notion.site/Pomotime-30298f0367808009a746e6d41db60cd1"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+          >
+            <span lang="ko">Pomotime 개인정보 처리방침</span>
+            <span lang="en">Pomotime Privacy Policy</span>
+          </a>
+          <a
+            href="https://exchange-diary.imweb.me/?mode=privacy"
+            target="_blank"
+            class="hover:text-gray-600 underline"
+          >
+            <span lang="ko">공유일기 개인정보 처리방침</span>
+            <span lang="en">Shared Diary Privacy Policy</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function setLanguage(lang) {
+        document.documentElement.setAttribute("lang", lang);
+        localStorage.setItem("preferred-language", lang);
+      }
+
+      function toggleLanguage() {
+        const currentLang = document.documentElement.getAttribute("lang");
+        const newLang = currentLang === "en" ? "ko" : "en";
+        setLanguage(newLang);
+      }
+
+      // Initialize language from localStorage or browser settings
+      const savedLang = localStorage.getItem("preferred-language");
+      const browserLang = navigator.language.startsWith("ko") ? "ko" : "en";
+      setLanguage(savedLang || browserLang);
+    </script>
+  </body>
+</html>
