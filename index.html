@@ -81,8 +81,14 @@
 
       .nav {
         display: flex;
+        align-items: center;
         gap: clamp(16px, 3vw, 38px);
         color: var(--muted);
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
       }
 
       .nav a:hover {
@@ -90,12 +96,16 @@
       }
 
       .lang-toggle {
+        display: inline-flex;
+        align-items: center;
         border: 0;
         padding: 0;
         background: transparent;
         color: var(--muted);
         cursor: pointer;
         font: inherit;
+        line-height: 1;
+        margin: 0;
       }
 
       .lang-toggle:hover {
