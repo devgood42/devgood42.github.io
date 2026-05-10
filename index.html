@@ -209,11 +209,30 @@
         font-size: 1rem;
       }
 
+      .piece-icon {
+        width: clamp(32px, 3.4vw, 44px);
+        height: clamp(32px, 3.4vw, 44px);
+        flex: 0 0 auto;
+        border-radius: 11px;
+        object-fit: cover;
+        transform: translateY(-0.08em);
+      }
+
       .piece h2 {
         margin: 0;
-        font-size: clamp(3.1rem, 6vw, 8rem);
+        font-size: clamp(3.1rem, 5vw, 8rem);
         font-weight: 720;
         line-height: 0.95;
+      }
+
+      .piece-title {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+      }
+
+      .piece-title h2 {
+        margin: 0;
       }
 
       .piece-desc {
@@ -282,38 +301,6 @@
         margin-top: 72px;
       }
 
-      .archive {
-        padding: 108px 0 132px;
-      }
-
-      .archive-grid {
-        display: grid;
-        grid-template-columns: 180px minmax(0, 1fr) 160px;
-        gap: clamp(24px, 5vw, 76px);
-        align-items: start;
-        padding-top: 28px;
-        border-top: 1px solid var(--ink);
-      }
-
-      .archive img {
-        width: 96px;
-        height: 96px;
-      }
-
-      .archive h2 {
-        margin: 0;
-        font-size: clamp(2.1rem, 4vw, 4.5rem);
-        line-height: 1.05;
-      }
-
-      .archive p {
-        max-width: 520px;
-        margin: 22px 0 0;
-        color: var(--muted);
-        font-weight: 570;
-        line-height: 1.8;
-      }
-
       footer {
         padding: 32px 0 46px;
         border-top: 1px solid var(--line);
@@ -365,8 +352,7 @@
       @media (max-width: 920px) {
         .hero-grid,
         .piece-grid,
-        .piece:nth-child(even) .piece-grid,
-        .archive-grid {
+        .piece:nth-child(even) .piece-grid {
           grid-template-columns: 1fr;
         }
 
@@ -427,6 +413,10 @@
         .phone-frame {
           width: min(250px, 70vw);
           border-width: 1px;
+        }
+
+        .piece-title {
+          gap: 12px;
         }
 
         .view-pair {
@@ -520,8 +510,11 @@
                   <span lang="en">ooring<br />Living Tool, 2026<br />iOS</span>
                 </span>
               </div>
-              <h2 lang="ko">우링</h2>
-              <h2 lang="en">ooring</h2>
+              <div class="piece-title">
+                <img class="piece-icon" src="assets/images/ooring-icon.png" alt="ooring 아이콘" />
+                <h2 lang="ko">우링</h2>
+                <h2 lang="en">ooring</h2>
+              </div>
               <p class="piece-desc">
                 <span lang="ko">
                   같이 사는 사람들 사이에서 집안일은 생각보다 말로 꺼내기 어렵습니다.
@@ -566,7 +559,10 @@
                   <span lang="en">Re:Post<br />Record Tool, 2026<br />iOS / Android</span>
                 </span>
               </div>
-              <h2>Re:Post</h2>
+              <div class="piece-title">
+                <img class="piece-icon" src="assets/images/report.png" alt="Re:Post 아이콘" />
+                <h2>Re:Post</h2>
+              </div>
               <p class="piece-desc">
                 <span lang="ko">
                   기록은 쓰는 순간보다 나중에 다시 볼 때 의미가 생기기도 합니다.
@@ -624,7 +620,10 @@
                   <span lang="en">Scoreboard<br />Sports Tool, 2026<br />iOS / Android</span>
                 </span>
               </div>
-              <h2>Scoreboard</h2>
+              <div class="piece-title">
+                <img class="piece-icon" src="assets/images/scoreboard-icon.png" alt="Scoreboard 아이콘" />
+                <h2>Scoreboard</h2>
+              </div>
               <p class="piece-desc">
                 <span lang="ko">
                   운동을 함께하다 보면 점수판 근처까지 가지 않고도 점수를 바로 수정하고
@@ -678,7 +677,10 @@
                   <span lang="en">Pomotime<br />Focus Tool, 2026<br />iOS / Android</span>
                 </span>
               </div>
-              <h2>Pomotime</h2>
+              <div class="piece-title">
+                <img class="piece-icon" src="assets/images/pomotime-icon.png" alt="Pomotime 아이콘" />
+                <h2>Pomotime</h2>
+              </div>
               <p class="piece-desc">
                 <span lang="ko">
                   집중을 시작할 때 필요한 것은 많은 기능이 아니라, 바로 누를 수 있는
@@ -726,33 +728,48 @@
         </article>
       </section>
 
-      <section class="archive" id="archive">
-        <div class="wrap archive-grid reveal">
-          <img src="assets/images/diary-icon.png" alt="공유일기 아이콘" />
-          <div>
-            <div class="label">Archive</div>
-            <h2>
-              <span lang="ko">공유일기</span>
-              <span lang="en">Shared Diary</span>
-            </h2>
-            <p>
-              <span lang="ko">
-                가까운 사람과 함께 쓰는 일기 앱입니다.<br />
-                처음 만든 작업물이자, Good42를 시작하게 해준 계기이기도 해요.
-              </span>
-              <span lang="en">
-                A diary app for writing with someone close to you.<br />
-                It was the first project, and one of the reasons Good42 began.
-              </span>
-            </p>
+      <section class="exhibition" id="archive">
+        <article class="piece">
+          <div class="wrap piece-grid">
+            <div class="piece-copy reveal">
+              <div class="meta">
+                <span class="number">A1</span>
+                <span>
+                  <span lang="ko">공유일기<br />소셜 다이어리, 2024<br />iOS</span>
+                  <span lang="en">Shared Diary<br />Social Diary, 2024<br />iOS</span>
+                </span>
+              </div>
+              <div class="piece-title">
+                <img class="piece-icon" src="assets/images/diary-icon.png" alt="공유일기 아이콘" />
+                <h2>
+                  <span lang="ko">공유일기</span>
+                  <span lang="en">Shared Diary</span>
+                </h2>
+              </div>
+              <p class="piece-desc">
+                <span lang="ko">
+                  가까운 사람과 함께 쓰는 일기 앱입니다. 처음 만든 작업물이자,
+                  Good42를 시작하게 해준 계기이기도 해요.
+                </span>
+                <span lang="en">
+                  A diary app for writing with someone close to you. It was the first project,
+                  and one of the reasons Good42 began.
+                </span>
+              </p>
+              <div class="links">
+                <a href="magazine.html#archive-diary">
+                  <span lang="ko">작업 기록</span>
+                  <span lang="en">Notes</span>
+                </a>
+              </div>
+            </div>
+            <div class="piece-view reveal">
+              <div class="phone-frame drift" data-drift="0.04">
+                <img src="assets/screenshots/diary.png" alt="공유일기 앱 화면" />
+              </div>
+            </div>
           </div>
-          <div class="links">
-            <a href="magazine.html#archive-diary">
-              <span lang="ko">작업 기록</span>
-              <span lang="en">Notes</span>
-            </a>
-          </div>
-        </div>
+        </article>
       </section>
     </main>
 
