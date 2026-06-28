@@ -320,6 +320,43 @@
 
     <div class="magazine-container">
 
+        <!-- Issue 06: TrueNorth -->
+        <section id="issue-06">
+            <div class="issue-number serif">06</div>
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
+                <div class="w-full md:w-1/3 space-y-4">
+                    <div class="glan-tag fade-up" style="background-color: #050a12;">Direction</div>
+                    <h2 class="cover-title fade-up fade-delay-1 serif italic">북극성</h2>
+                    <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
+                        바쁜 일상 속에서 흐려진 나의 방향.<br>
+                        북극성을 기준으로 오늘의 작은 실행까지 이어보는 수첩.
+                    </p>
+                    <div class="pt-8 fade-up fade-delay-2">
+                        <a href="https://apps.apple.com/app/id6785026882" target="_blank" class="btn-explorer">APP STORE →</a>
+                    </div>
+                    <div class="tech-highlights fade-up fade-delay-2">
+                        <span class="tech-label">Technical Spread</span>
+                        <div class="feature-item">온보딩 답변 기반 북극성 및 목표 초안 생성</div>
+                        <div class="feature-item">연간, 월간, 주간, 오늘 실행을 잇는 항로 구조</div>
+                        <div class="feature-item">SQLite 기반 로컬 저장과 캘린더 방향감 기록</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                    <div class="gallery-container" id="gallery-truenorth">
+                        <div class="gallery-track">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                    <div class="flex justify-end md:justify-start">
+                        <div class="scroll-hint">Explore the spread</div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-zinc-200">
+                        <img src="assets/images/trueNorth-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Issue 05: HaruColor -->
         <section id="issue-05">
             <div class="issue-number serif">05</div>
@@ -563,6 +600,13 @@
     <script>
         // Assets Data
         const galleryData = {
+            truenorth: [
+                'assets/screenshots/trueNorth/1.jpg',
+                'assets/screenshots/trueNorth/2.png',
+                'assets/screenshots/trueNorth/3.png',
+                'assets/screenshots/trueNorth/4.png',
+                'assets/screenshots/trueNorth/5.png',
+            ],
             harucolor: [
                 'assets/screenshots/harucolor/0.png',
                 'assets/screenshots/harucolor/1.png',
