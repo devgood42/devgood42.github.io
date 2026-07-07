@@ -240,7 +240,8 @@
         background: #050505;
       }
 
-      .slide .media img {
+      .slide .media img,
+      .slide .image-grid img {
         cursor: zoom-in;
       }
 
@@ -409,11 +410,11 @@
         inset: 0;
         z-index: 50;
         display: none;
-        align-items: start;
+        align-items: center;
         justify-items: center;
         padding: 34px;
         background: rgba(0, 0, 0, 0.96);
-        overflow-y: auto;
+        overflow: hidden;
         overscroll-behavior: contain;
       }
 
@@ -422,10 +423,22 @@
       }
 
       .image-modal img {
-        width: min(100%, 900px);
+        width: auto;
         height: auto;
         max-width: 100%;
+        max-height: calc(100svh - 68px);
         object-fit: contain;
+      }
+
+      .image-modal.scrollable {
+        align-items: start;
+        padding-inline: 18px;
+        overflow-y: auto;
+      }
+
+      .image-modal.scrollable img {
+        width: min(100%, 1200px);
+        max-height: none;
       }
 
       .image-modal-close {
@@ -992,7 +1005,7 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">04. 창작 (1/4)</p>
+            <p class="section-label">04. 창작 (1/5)</p>
             <div class="content two-col">
               <div class="copy">
                 <h3>이 앱들은요.</h3>
@@ -1015,7 +1028,7 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">04. 창작 (2/4)</p>
+            <p class="section-label">04. 창작 (2/5)</p>
             <div class="content app-board">
               <div class="copy">
                 <h3>월간 신인호</h3>
@@ -1044,7 +1057,7 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">04. 창작 (3/4)</p>
+            <p class="section-label">04. 창작 (3/5)</p>
             <div class="content two-col">
               <div class="copy">
                 <h3>왜 시작했냐면요</h3>
@@ -1052,6 +1065,32 @@
               </div>
               <div class="media cover">
                 <img src="assets/traces/dev-6.jpg" alt="창작물을 만들고 남긴 화면" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="이전의 창작">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 음악</p>
+                <p class="active">04. 창작</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">04. 창작 (4/5)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>이전에는 함께 만들었어요</h3>
+                <p class="lead">이전에는 팀 소속으로 만들어서,<br />온전히 나만의 것이 없었거든요.</p>
+              </div>
+              <div class="image-grid">
+                <img src="assets/traces/dev-3.jpg" alt="단체로 만든 작업 사진 1" />
+                <img src="assets/traces/dev-2.jpg" alt="단체로 만든 작업 사진 2" />
+                <img src="assets/traces/dev-7.jpg" alt="단체로 만든 작업 사진 3" />
+                <img src="assets/traces/dev-5.jpg" alt="단체로 만든 작업 사진 4" />
               </div>
             </div>
           </article>
@@ -1067,7 +1106,7 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">04. 창작 (4/4)</p>
+            <p class="section-label">04. 창작 (5/5)</p>
             <div class="content two-col">
               <div class="copy">
                 <h3>앱을 만들다 보니 좋았던 점들</h3>
@@ -1238,9 +1277,10 @@
         imageModal.scrollTop = 0;
       }
 
-      function openImageModal(src, alt, gallery = null, index = 0) {
+      function openImageModal(src, alt, gallery = null, index = 0, mode = "fit") {
         activeGallery = gallery || [{ src, alt }];
         activeGalleryIndex = index;
+        imageModal.classList.toggle("scrollable", mode === "scroll");
         renderModalImage();
         imageModal.classList.add("open");
         imageModal.setAttribute("aria-hidden", "false");
@@ -1268,6 +1308,7 @@
 
       function closeImageModal() {
         imageModal.classList.remove("open");
+        imageModal.classList.remove("scrollable");
         imageModal.setAttribute("aria-hidden", "true");
         imageModalImg.src = "";
         isModalOpen = false;
@@ -1278,7 +1319,7 @@
       zoomTriggers.forEach((trigger) => {
         trigger.addEventListener("click", () => {
           const image = trigger.querySelector("img");
-          openImageModal(trigger.dataset.zoomSrc || image.src, image.alt || "");
+          openImageModal(trigger.dataset.zoomSrc || image.src, image.alt || "", null, 0, "scroll");
         });
       });
 
@@ -1290,12 +1331,14 @@
         });
       });
 
-      document.querySelectorAll(".slide .media img").forEach((image) => {
+      const zoomableImages = ".slide .media img, .slide .image-grid img";
+
+      document.querySelectorAll(zoomableImages).forEach((image) => {
         if (image.closest(".zoom-trigger, .gallery-trigger, .app-row")) return;
 
         image.addEventListener("click", () => {
           const stack = image.closest(".stack");
-          const sectionImages = [...stack.querySelectorAll(".slide .media img")].filter(
+          const sectionImages = [...stack.querySelectorAll(zoomableImages)].filter(
             (item) => !item.closest(".zoom-trigger, .gallery-trigger, .app-row")
           );
           const gallery = sectionImages.map((item) => ({
