@@ -240,6 +240,10 @@
         background: #050505;
       }
 
+      .slide .media img {
+        cursor: zoom-in;
+      }
+
       .zoom-trigger {
         width: 100%;
         display: block;
@@ -1280,6 +1284,24 @@
           const gallery = galleries[trigger.dataset.gallery] || [];
           const index = Number(trigger.dataset.index || 0);
           if (gallery.length) openImageModal(gallery[index].src, gallery[index].alt, gallery, index);
+        });
+      });
+
+      document.querySelectorAll(".slide .media img").forEach((image) => {
+        if (image.closest(".zoom-trigger, .gallery-trigger, .app-row")) return;
+
+        image.addEventListener("click", () => {
+          const stack = image.closest(".stack");
+          const sectionImages = [...stack.querySelectorAll(".slide .media img")].filter(
+            (item) => !item.closest(".zoom-trigger, .gallery-trigger, .app-row")
+          );
+          const gallery = sectionImages.map((item) => ({
+            src: item.getAttribute("src"),
+            alt: item.alt || "",
+          }));
+          const index = sectionImages.indexOf(image);
+
+          openImageModal(gallery[index].src, gallery[index].alt, gallery, index);
         });
       });
 
