@@ -198,6 +198,34 @@
         line-height: 1.62;
       }
 
+      .point-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .point {
+        border: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.06);
+        padding: 18px 20px;
+      }
+
+      .point span {
+        display: block;
+        color: var(--lemon);
+        font-size: 1rem;
+        font-weight: 620;
+        margin-bottom: 8px;
+      }
+
+      .point strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1.46rem;
+        font-weight: 620;
+        line-height: 1.34;
+      }
+
       .media {
         border: 1px solid var(--line);
         background: var(--panel);
@@ -210,6 +238,33 @@
         height: 64svh;
         object-fit: contain;
         background: #050505;
+      }
+
+      .zoom-trigger {
+        width: 100%;
+        display: block;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: zoom-in;
+      }
+
+      .zoom-trigger img {
+        pointer-events: none;
+      }
+
+      .gallery-trigger {
+        width: 100%;
+        height: 100%;
+        display: block;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: zoom-in;
+      }
+
+      .gallery-trigger img {
+        pointer-events: none;
       }
 
       .cover img {
@@ -340,6 +395,73 @@
         color: rgba(247, 247, 244, 0.38);
         font-size: 0.96rem;
         font-weight: 560;
+      }
+
+      .image-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: none;
+        align-items: start;
+        justify-items: center;
+        padding: 34px;
+        background: rgba(0, 0, 0, 0.96);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+      }
+
+      .image-modal.open {
+        display: grid;
+      }
+
+      .image-modal img {
+        width: min(100%, 900px);
+        height: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      .image-modal-close {
+        position: fixed;
+        top: 24px;
+        right: 28px;
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.06);
+        color: var(--ink);
+        font: inherit;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .image-modal-nav {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 58px;
+        height: 74px;
+        border: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.06);
+        color: var(--ink);
+        font: inherit;
+        font-size: 2.2rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .image-modal-nav:disabled {
+        opacity: 0.22;
+        cursor: default;
+      }
+
+      .image-modal-prev {
+        left: 28px;
+      }
+
+      .image-modal-next {
+        right: 28px;
       }
 
       .slide .content,
@@ -487,11 +609,13 @@
             <p class="section-label">00. 인트로 (1/2)</p>
             <div class="content two-col">
               <div class="copy">
-                <h1>취향 나눔회</h1>
+                <h2>안녕하세요<br />신인호입니다.</h2>
                 <p class="lead">그동안의 취향 몇 가지를 보여드리려고 합니다.</p>
               </div>
               <div class="media cover">
-                <img src="assets/traces/art-work.jpg" alt="취향 나눔회 아트워크" />
+                <button class="zoom-trigger" type="button" data-zoom-src="assets/traces/art-work.jpg" aria-label="아트워크 크게 보기">
+                  <img src="assets/traces/art-work.jpg" alt="취향 나눔회 아트워크" />
+                </button>
               </div>
             </div>
           </article>
@@ -509,8 +633,8 @@
             </aside>
             <p class="section-label">00. 인트로 (2/2)</p>
             <div class="content">
-              <h2>안녕하세요<br />신인호입니다.</h2>
-              <p class="lead">과거의 취향부터 현재하고 있는 것들까지 간단히 소개하려고 합니다.<br/>이어온 흔적들을 보며, 관심가는 취향을 찾아가는 시간이 되면 좋겠어요.</p>
+              <h2>글 · 그림 · 밴드 · 앱</h2>
+              <p class="lead">과거의 취향부터 현재하고 있는 것들까지 간단히 소개하려고 합니다.<br/>이어온 흔적들을 보며, 관심가는 취향을 찾아가는 시간이 되시면 좋겠습니다.</p>
             </div>
           </article>
         </section>
@@ -528,15 +652,15 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">01. 글 (1/2)</p>
-            <div class="content two-col">
+            <p class="section-label">01. 글 (1/4)</p>
+            <div class="content">
               <div class="copy">
                 <h3>내 속에 담긴 그릇이 언제나 고요하도록<br />오늘의 찻잎을 띄워 주소서</h3>
                 <p class="lead">카톡 상태 메시지</p>
               </div>
             </div>
           </article>
-          <article class="slide" data-title="글 상세">
+          <article class="slide" data-title="글 시작">
             <aside class="side">
               <p class="brand">취향 나눔회</p>
               <div class="menu">
@@ -548,16 +672,82 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">01. 글 (2/2)</p>
+            <p class="section-label">01. 글 (2/4)</p>
+            <div class="content">
+              <div class="copy">
+                <h3>사실 예전부터 글을 쓰는 걸 좋아했습니다.</h3>
+                <p class="lead">아이패드를 사고 뭘 해볼까 고민하다가, 자연스럽게 글을 적게 되었습니다.</p>
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="글 사진">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p class="active">01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">01. 글 (3/4)</p>
             <div class="content two-col">
               <div class="copy">
-                <h3>비슷한 마음의<br />다른 방향</h3>
-                <p class="note">지금 자주 쓰고 있지는 않지만, 예전에 쓴 글을 보면 어떤 감정을 오래 보고 싶어 했는지는 남아 있습니다.</p>
+                <h3>글쓰는 취향은 어떤가요</h3>
+                <p class="lead">요즘은 자주 쓰지는 않지만,<br/>예전에 쓴 글을 보면 어떤 마음이었는지 볼 수 있어서 좋더라고요.</p>
               </div>
               <div class="writing-grid">
-                <div class="media"><img src="assets/traces/tea-leaf.png" alt="찻잎을 띄워 주소서" /></div>
-                <div class="media"><img src="assets/traces/grow-leaf.png" alt="새싹을 틔웁니다" /></div>
-                <div class="media"><img src="assets/traces/unflower.png" alt="지고 난 꽃" /></div>
+                <div class="media">
+                  <button class="gallery-trigger" type="button" data-gallery="writing" data-index="0" aria-label="찻잎을 띄워 주소서 크게 보기">
+                    <img src="assets/traces/tea-leaf.png" alt="찻잎을 띄워 주소서" />
+                  </button>
+                </div>
+                <div class="media">
+                  <button class="gallery-trigger" type="button" data-gallery="writing" data-index="1" aria-label="새싹을 틔웁니다 크게 보기">
+                    <img src="assets/traces/grow-leaf.png" alt="새싹을 틔웁니다" />
+                  </button>
+                </div>
+                <div class="media">
+                  <button class="gallery-trigger" type="button" data-gallery="writing" data-index="2" aria-label="지고 난 꽃 크게 보기">
+                    <img src="assets/traces/unflower.png" alt="지고 난 꽃" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="글을 쓴 이유">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p class="active">01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">01. 글 (4/4)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>적다 보니 좋았던 점들</h3>
+                <p class="lead">거창한 글쓰기가 아니더라도,<br/>가끔 적어두는 것만으로도 생각이 조금 정리되었습니다.</p>
+              </div>
+              <div class="point-list">
+                <div class="point">
+                  <span>왜 썼냐면</span>
+                  <strong>머릿 속에 맴도는 마음을 정리하고 싶었어요.</strong>
+                </div>
+                <div class="point">
+                  <span>좋았던 점</span>
+                  <strong>마음 정리도 되고, 적다보면 따뜻한 마음이 생겨요.</strong>
+                </div>
+                <div class="point">
+                  <span>추천합니다</span>
+                  <strong>요즘 생각이 많다면 가볍게 적어보세요.</strong>
+                </div>
               </div>
             </div>
           </article>
@@ -576,11 +766,34 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">02. 그림</p>
+            <p class="section-label">02. 그림 (1/4)</p>
             <div class="content two-col">
               <div class="copy">
-                <h2>말보다<br />먼저 그린 것들</h2>
-                <p class="lead">잘 설명하기 어려운 표정과 분위기를 선으로 남겼습니다.</p>
+                <h3>이 사진은<br />제 GitHub 프로필 사진인데요.</h3>
+                <p class="lead">사실 예전에 직접 그려둔 그림입니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/drwaing-00.jpg" alt="직접 그린 GitHub 프로필 사진" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="그림 시작">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p class="active">02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">02. 그림 (2/4)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>그림 그리는 취향은 어떤가요</h3>
+                <p class="lead">한동안 떠오르는 이미지들을 가볍게 그려두곤 했습니다.<br/>여행지에서나 특별한 장소에서 느껴지는 분위기를 남기고 싶었어요.</p>
               </div>
               <div class="image-grid">
                 <img src="assets/traces/drawing-01.png" alt="직접 그린 그림 1" />
@@ -602,14 +815,48 @@
                 <p>05. 마무리</p>
               </div>
             </aside>
-            <p class="section-label">아래로 더 보기</p>
+            <p class="section-label">02. 그림 (3/4)</p>
             <div class="content two-col">
               <div class="copy">
-                <h3>이모티콘으로<br />남은 표정</h3>
-                <p class="note">개발동아리에서 만들었던 이모티콘도 같은 결입니다. 말보다 먼저 떠오른 표정들을 모아둔 작업이었습니다.</p>
+                <h3>동아리에서 사용하던 캐릭터</h3>
+                <p class="lead">조금씩 그림을 그리다 보니,<br/>어느새 슬랙에서 사용하는 이모지도 그리게 되었어요.</p>
               </div>
               <div class="media cover">
                 <img src="assets/traces/draw-emoticon.jpg" alt="개발동아리에서 만든 이모티콘 그림" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="그림을 추천하는 이유">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p class="active">02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">02. 그림 (4/4)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>그리다 보니 좋았던 점들</h3>
+                <p class="lead">평소 스쳐가던 일상의 풍경과 사물들을<br/>더 관심있게 바라보게 되었습니다.</p>
+              </div>
+              <div class="point-list">
+                <div class="point">
+                  <span>왜 그렸냐면</span>
+                  <strong>그때의 분위기를 남기고 싶었어요.</strong>
+                </div>
+                <div class="point">
+                  <span>좋았던 점</span>
+                  <strong>조금씩 그리다 보니 어느새 봐줄만한 그림들이 생겼습니다.</strong>
+                </div>
+                <div class="point">
+                  <span>추천합니다</span>
+                  <strong>사진 대신 다른 무언가를 남기고 싶은 분들이라면 가볍게 시작해보세요.</strong>
+                </div>
               </div>
             </div>
           </article>
@@ -751,12 +998,36 @@
       <div class="hint" id="hint">← → 섹션 · ↑ ↓ 상세</div>
     </main>
 
+    <div class="image-modal" id="imageModal" aria-hidden="true" tabindex="-1">
+      <button class="image-modal-close" type="button" aria-label="닫기">×</button>
+      <button class="image-modal-nav image-modal-prev" type="button" aria-label="이전 이미지">&lt;</button>
+      <img src="" alt="" />
+      <button class="image-modal-nav image-modal-next" type="button" aria-label="다음 이미지">&gt;</button>
+    </div>
+
     <script>
       const stacks = [...document.querySelectorAll(".stack")];
       const progressBar = document.querySelector("#progressBar");
       const hint = document.querySelector("#hint");
+      const imageModal = document.querySelector("#imageModal");
+      const imageModalImg = imageModal.querySelector("img");
+      const imageModalClose = imageModal.querySelector(".image-modal-close");
+      const imageModalPrev = imageModal.querySelector(".image-modal-prev");
+      const imageModalNext = imageModal.querySelector(".image-modal-next");
+      const zoomTriggers = document.querySelectorAll(".zoom-trigger");
+      const galleryTriggers = document.querySelectorAll(".gallery-trigger");
+      const galleries = {
+        writing: [
+          { src: "assets/traces/tea-leaf.png", alt: "찻잎을 띄워 주소서" },
+          { src: "assets/traces/grow-leaf.png", alt: "새싹을 틔웁니다" },
+          { src: "assets/traces/unflower.png", alt: "지고 난 꽃" },
+        ],
+      };
       let horizontalIndex = 0;
       const verticalIndexes = stacks.map(() => 0);
+      let isModalOpen = false;
+      let activeGallery = [];
+      let activeGalleryIndex = 0;
 
       function currentSlides() {
         return [...stacks[horizontalIndex].querySelectorAll(".slide")];
@@ -789,7 +1060,92 @@
         update();
       }
 
+      function renderModalImage() {
+        const current = activeGallery[activeGalleryIndex];
+        imageModalImg.src = current.src;
+        imageModalImg.alt = current.alt;
+        imageModalPrev.disabled = activeGallery.length <= 1 || activeGalleryIndex === 0;
+        imageModalNext.disabled = activeGallery.length <= 1 || activeGalleryIndex === activeGallery.length - 1;
+        imageModalPrev.style.display = activeGallery.length > 1 ? "" : "none";
+        imageModalNext.style.display = activeGallery.length > 1 ? "" : "none";
+        imageModal.scrollTop = 0;
+      }
+
+      function openImageModal(src, alt, gallery = null, index = 0) {
+        activeGallery = gallery || [{ src, alt }];
+        activeGalleryIndex = index;
+        renderModalImage();
+        imageModal.classList.add("open");
+        imageModal.setAttribute("aria-hidden", "false");
+        isModalOpen = true;
+        imageModal.focus();
+      }
+
+      function moveModalImage(delta) {
+        if (activeGallery.length <= 1) return;
+        activeGalleryIndex = Math.max(0, Math.min(activeGallery.length - 1, activeGalleryIndex + delta));
+        renderModalImage();
+      }
+
+      function openSingleImageModal(src, alt) {
+        imageModalImg.src = src;
+        imageModalImg.alt = alt;
+        activeGallery = [{ src, alt }];
+        activeGalleryIndex = 0;
+        renderModalImage();
+        imageModal.classList.add("open");
+        imageModal.setAttribute("aria-hidden", "false");
+        isModalOpen = true;
+        imageModal.focus();
+      }
+
+      function closeImageModal() {
+        imageModal.classList.remove("open");
+        imageModal.setAttribute("aria-hidden", "true");
+        imageModalImg.src = "";
+        isModalOpen = false;
+        activeGallery = [];
+        activeGalleryIndex = 0;
+      }
+
+      zoomTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const image = trigger.querySelector("img");
+          openImageModal(trigger.dataset.zoomSrc || image.src, image.alt || "");
+        });
+      });
+
+      galleryTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          const gallery = galleries[trigger.dataset.gallery] || [];
+          const index = Number(trigger.dataset.index || 0);
+          if (gallery.length) openImageModal(gallery[index].src, gallery[index].alt, gallery, index);
+        });
+      });
+
+      imageModalClose.addEventListener("click", closeImageModal);
+      imageModalPrev.addEventListener("click", () => moveModalImage(-1));
+      imageModalNext.addEventListener("click", () => moveModalImage(1));
+      imageModal.addEventListener("click", (event) => {
+        if (event.target === imageModal) closeImageModal();
+      });
+
       window.addEventListener("keydown", (event) => {
+        if (isModalOpen) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeImageModal();
+          }
+          if (event.key === "ArrowRight") {
+            event.preventDefault();
+            moveModalImage(1);
+          }
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            moveModalImage(-1);
+          }
+          return;
+        }
         if (["ArrowRight", "PageDown"].includes(event.key)) {
           event.preventDefault();
           moveHorizontal(1);
