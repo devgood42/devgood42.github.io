@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>경험을 흔적으로 만드는 사람 · 발표</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      :root {
+        --bg: #f2f2ef;
+        --paper: #fbfbf7;
+        --ink: #151515;
+        --muted: #696964;
+        --line: rgba(21, 21, 21, 0.12);
+        --yellow: #ffe600;
+        --green: #326c4f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      main img:not(.app img) {
+        cursor: zoom-in;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .deck {
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+      }
+
+      .slide {
+        display: none;
+        min-height: calc(100svh - 72px);
+        padding: 54px;
+      }
+
+      .slide.active {
+        display: grid;
+        align-items: center;
+      }
+
+      .slide-inner {
+        width: min(1240px, 100%);
+        margin: 0 auto;
+      }
+
+      .kicker {
+        margin: 0 0 18px;
+        color: var(--green);
+        font-size: 0.8rem;
+        font-weight: 900;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        font-size: 5.6rem;
+        font-weight: 900;
+        line-height: 0.98;
+      }
+
+      h2 {
+        font-size: 4.7rem;
+        font-weight: 900;
+        line-height: 1.04;
+      }
+
+      .ko {
+        display: block;
+        margin-top: 16px;
+        font-family: "Pretendard", "Inter", sans-serif;
+        font-size: 2.1rem;
+        font-weight: 850;
+        line-height: 1.18;
+      }
+
+      .lead {
+        max-width: 760px;
+        margin: 26px 0 0;
+        color: #363631;
+        font-size: 1.22rem;
+        font-weight: 650;
+        line-height: 1.72;
+      }
+
+      .hero-slide {
+        display: grid;
+        grid-template-columns: minmax(0, 0.45fr) minmax(300px, 0.55fr);
+        gap: 62px;
+        align-items: center;
+      }
+
+      .art-card,
+      .image-card,
+      .panel,
+      .app {
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid var(--line);
+      }
+
+      .art-card {
+        position: relative;
+        padding: 16px;
+        box-shadow: 0 28px 70px rgba(0, 0, 0, 0.08);
+      }
+
+      .art-card::before {
+        content: "";
+        position: absolute;
+        width: 54px;
+        height: 54px;
+        right: -12px;
+        top: 12%;
+        background: var(--yellow);
+        z-index: -1;
+      }
+
+      .art-card img {
+        width: 100%;
+        max-height: 72svh;
+        object-fit: contain;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: minmax(0, 0.52fr) minmax(0, 0.48fr);
+        gap: 64px;
+        align-items: center;
+      }
+
+      .image-card {
+        padding: 14px;
+      }
+
+      .image-card img {
+        width: 100%;
+        max-height: 70svh;
+        object-fit: contain;
+      }
+
+      .support-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 32px;
+      }
+
+      .support {
+        display: grid;
+        grid-template-columns: minmax(0, 0.44fr) minmax(0, 0.56fr);
+        gap: 16px;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid var(--line);
+        padding: 14px;
+      }
+
+      .support img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+      }
+
+      .support span,
+      .app span {
+        color: var(--green);
+        font-size: 0.74rem;
+        font-weight: 900;
+      }
+
+      .support h3 {
+        margin: 8px 0 0;
+        font-family: "Pretendard", "Inter", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 850;
+      }
+
+      .support p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 620;
+        line-height: 1.6;
+      }
+
+      .drawings {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .drawings img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.66);
+        border: 1px solid var(--line);
+        padding: 10px;
+      }
+
+      .panel {
+        margin-top: 32px;
+        padding: 32px;
+      }
+
+      .panel p {
+        margin: 0;
+        font-family: "Pretendard", "Inter", sans-serif;
+        font-size: 2rem;
+        font-weight: 850;
+        line-height: 1.35;
+      }
+
+      .photo-frame {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 14px;
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        max-height: 58vh;
+        object-fit: cover;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.62);
+        padding: 10px;
+      }
+
+      .photo-frame.single {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-frame.grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .photo-frame.grid img {
+        aspect-ratio: 1 / 1;
+      }
+
+      .apps {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 32px;
+      }
+
+      .app {
+        display: grid;
+        grid-template-columns: 46px minmax(0, 1fr);
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+      }
+
+      .app img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+      }
+
+      .app strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 1.1rem;
+      }
+
+      .controls {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 34px;
+        border-top: 1px solid var(--line);
+        background: rgba(242, 242, 239, 0.92);
+      }
+
+      button,
+      .site-link {
+        min-height: 42px;
+        border: 1.5px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        padding: 0 14px;
+        font: inherit;
+        font-size: 0.84rem;
+        font-weight: 850;
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 8px;
+      }
+
+      .progress {
+        flex: 1;
+        height: 2px;
+        background: var(--line);
+      }
+
+      .bar {
+        width: 0;
+        height: 100%;
+        background: var(--ink);
+        transition: width 180ms ease;
+      }
+
+      .counter {
+        min-width: 62px;
+        color: var(--muted);
+        font-size: 0.84rem;
+        font-weight: 850;
+        text-align: right;
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        grid-template-columns: 82px minmax(0, 1fr) 82px;
+        grid-template-rows: 68px minmax(0, 1fr);
+        background: rgba(15, 15, 14, 0.94);
+        color: #fff;
+      }
+
+      .lightbox.open {
+        display: grid;
+      }
+
+      .lightbox-close {
+        grid-column: 3;
+        justify-self: end;
+        width: 68px;
+        height: 68px;
+        border: 0;
+        background: transparent;
+        color: #fff;
+        font: inherit;
+        font-size: 1.7rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .lightbox-stage {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+        min-height: 0;
+        display: grid;
+        place-items: center;
+        padding: 18px 0 46px;
+      }
+
+      .lightbox-image {
+        max-width: 100%;
+        max-height: calc(100svh - 132px);
+        object-fit: contain;
+        cursor: default;
+      }
+
+      .lightbox-nav {
+        grid-row: 2;
+        border: 0;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.72);
+        font: inherit;
+        font-size: 2.4rem;
+        cursor: pointer;
+      }
+
+      .lightbox-prev {
+        grid-column: 1;
+      }
+
+      .lightbox-next {
+        grid-column: 3;
+      }
+
+      @media (max-width: 900px) {
+        .slide {
+          min-height: auto;
+          padding: 34px 18px 24px;
+        }
+
+        .slide.active {
+          display: block;
+        }
+
+        .hero-slide,
+        .two-col,
+        .support-grid,
+        .support,
+        .photo-frame,
+        .photo-frame.grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 4rem;
+        }
+
+        h2 {
+          font-size: 3.2rem;
+        }
+
+        .apps {
+          grid-template-columns: 1fr;
+        }
+
+        .drawings {
+          display: flex;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scroll-snap-type: x mandatory;
+          padding-bottom: 10px;
+        }
+
+        .drawings img {
+          min-width: 78%;
+          scroll-snap-align: start;
+        }
+
+        .controls {
+          position: sticky;
+          bottom: 0;
+          padding: 10px 12px;
+          backdrop-filter: blur(12px);
+        }
+
+        .site-link {
+          display: none;
+        }
+
+        .lightbox {
+          grid-template-columns: 54px minmax(0, 1fr) 54px;
+          grid-template-rows: 58px minmax(0, 1fr);
+        }
+
+        .lightbox-close {
+          width: 58px;
+          height: 58px;
+        }
+
+        .lightbox-stage {
+          padding-bottom: 28px;
+        }
+
+        .lightbox-image {
+          max-height: calc(100svh - 96px);
+        }
+      }
+
+      @media (max-width: 520px) {
+        h1 {
+          font-size: 3.2rem;
+        }
+
+        h2 {
+          font-size: 2.45rem;
+        }
+
+        .ko {
+          font-size: 1.35rem;
+        }
+
+        .lead {
+          font-size: 1rem;
+        }
+
+        .panel p {
+          font-size: 1.42rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-live="polite">
+      <section class="slide active">
+        <div class="slide-inner hero-slide">
+          <div>
+            <p class="kicker">작품처럼 남겨둔 것들</p>
+            <h1>내 안에 남은 경험<span class="ko">경험을 흔적으로 만드는 사람</span></h1>
+          </div>
+          <div class="art-card">
+            <img src="assets/traces/art-work.jpg" alt="경험을 담은 아트워크" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner two-col">
+          <div class="image-card">
+            <img src="assets/traces/tea-leaf.png" alt="찻잎을 띄워 주소서" />
+          </div>
+          <div>
+            <p class="kicker">중심 글</p>
+            <h2>찻잎을 띄워 주소서</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">보조 글</p>
+          <h2>같은 마음의 다른 방향</h2>
+          <div class="support-grid">
+            <article class="support">
+              <img src="assets/traces/grow-leaf.png" alt="새싹을 틔웁니다" />
+              <div>
+                <span>보조 글 01</span>
+                <h3>새싹을 틔웁니다</h3>
+              </div>
+            </article>
+            <article class="support">
+              <img src="assets/traces/unflower.png" alt="지고 난 꽃" />
+              <div>
+                <span>보조 글 02</span>
+                <h3>지고 난 꽃</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">선으로 남긴 것</p>
+          <h2>말보다 먼저 선을 긋던 시절</h2>
+          <div class="drawings">
+            <img src="assets/traces/drawing-01.png" alt="직접 그린 그림 1" />
+            <img src="assets/traces/drawing-02.png" alt="직접 그린 그림 2" />
+            <img src="assets/traces/drawing-03.png" alt="직접 그린 그림 3" />
+            <img src="assets/traces/drawing-04.jpg" alt="직접 그린 그림 4" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">합주</p>
+          <h2>혼자보다 같이 맞을 때</h2>
+          <div class="photo-frame grid">
+            <img src="assets/traces/band-0.png" alt="밴드로 남긴 장면 1" />
+            <img src="assets/traces/band-1.jpg" alt="합주 장면" />
+            <img src="assets/traces/band-3.JPG" alt="함께 맞추던 장면" />
+            <img src="assets/traces/band-4.JPG" alt="밴드로 남긴 장면 2" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">공연</p>
+          <h2>좋은 장면을 수집합니다</h2>
+          <div class="photo-frame grid">
+            <img src="assets/traces/band-2.JPG" alt="공연 장면" />
+            <img src="assets/traces/band-5.JPG" alt="기억에 남은 장면" />
+            <img src="assets/traces/dev-3.JPG" alt="현장에서 남긴 장면" />
+            <img src="assets/traces/dev-5.JPG" alt="함께 남긴 장면" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">개발</p>
+          <h2>만드는 시간도 남겨둡니다</h2>
+          <div class="photo-frame grid">
+            <img src="assets/traces/dev-0.png" alt="개발하며 남긴 장면 1" />
+            <img src="assets/traces/dev-01.png" alt="개발하며 남긴 장면 2" />
+            <img src="assets/traces/dev-2.jpg" alt="개발하며 남긴 장면 3" />
+            <img src="assets/traces/dev-6.jpg" alt="앱을 만들고 남긴 화면" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">앱</p>
+          <h2>요즘은 앱으로도 남깁니다</h2>
+          <div class="photo-frame single">
+            <img src="assets/traces/app.jpg" alt="현재 출시한 앱들 이미지" />
+          </div>
+          <div class="apps">
+            <div class="app"><img src="assets/images/pomotime-icon.png" alt="" /><div><span>1월</span><strong>집중의 모양</strong></div></div>
+            <div class="app"><img src="assets/images/scoreboard-icon.png" alt="" /><div><span>2월</span><strong>점수를 남기는 일</strong></div></div>
+            <div class="app"><img src="assets/images/diary-icon.png" alt="" /><div><span>3월</span><strong>다시 꺼낸 기록</strong></div></div>
+            <div class="app"><img src="assets/images/ooring-icon.png" alt="" /><div><span>4월</span><strong>둘레를 잇는 것</strong></div></div>
+            <div class="app"><img src="assets/images/harucolor-icon.png" alt="" /><div><span>5월</span><strong>하루컬러</strong></div></div>
+            <div class="app"><img src="assets/images/trueNorth-icon.png" alt="" /><div><span>6월</span><strong>방향을 찾는 법</strong></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">루틴</p>
+          <h2>바쁠수록 운동합니다</h2>
+          <div class="photo-frame grid">
+            <img src="assets/traces/run-1.png" alt="러닝으로 남긴 장면 1" />
+            <img src="assets/traces/run-2.png" alt="러닝으로 남긴 장면 2" />
+            <img src="assets/traces/run-3.png" alt="러닝으로 남긴 장면 3" />
+            <img src="assets/traces/run-4.JPG" alt="러닝으로 남긴 장면 4" />
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner two-col">
+          <div class="image-card">
+            <img src="assets/traces/draw-emoticon.jpg" alt="개발동아리에서 만든 이모티콘 그림" />
+          </div>
+          <div>
+            <p class="kicker">이모티콘</p>
+            <h2>같이 만들던 표정들</h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="slide">
+        <div class="slide-inner">
+          <p class="kicker">마지막 장</p>
+          <h2>다음 달엔 어떤 흔적이 남을까요?</h2>
+        </div>
+      </section>
+
+      <nav class="controls" aria-label="발표 조작">
+        <a class="site-link" href="traces.html">전시 페이지</a>
+        <div class="buttons">
+          <button id="prev" type="button" aria-label="이전 슬라이드">←</button>
+          <button id="next" type="button" aria-label="다음 슬라이드">→</button>
+        </div>
+        <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+        <div class="counter" id="counter">1 / 11</div>
+      </nav>
+    </main>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox-close" type="button" aria-label="닫기">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="이전 이미지">‹</button>
+      <div class="lightbox-stage">
+        <img class="lightbox-image" src="" alt="" />
+      </div>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="다음 이미지">›</button>
+    </div>
+
+    <script>
+      const slides = [...document.querySelectorAll(".slide")];
+      const prev = document.querySelector("#prev");
+      const next = document.querySelector("#next");
+      const counter = document.querySelector("#counter");
+      const bar = document.querySelector("#bar");
+      const galleryImages = [...document.querySelectorAll("main img")].filter(
+        (image) => !image.closest(".apps"),
+      );
+      const lightbox = document.querySelector("#lightbox");
+      const lightboxImage = lightbox.querySelector(".lightbox-image");
+      const closeLightbox = lightbox.querySelector(".lightbox-close");
+      const prevImage = lightbox.querySelector(".lightbox-prev");
+      const nextImage = lightbox.querySelector(".lightbox-next");
+      let index = 0;
+      let currentImageIndex = 0;
+
+      function showSlide(nextIndex) {
+        index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle("active", slideIndex === index);
+        });
+        prev.disabled = index === 0;
+        next.disabled = index === slides.length - 1;
+        counter.textContent = `${index + 1} / ${slides.length}`;
+        bar.style.width = `${((index + 1) / slides.length) * 100}%`;
+        window.scrollTo({ top: 0, behavior: "auto" });
+      }
+
+      prev.addEventListener("click", () => showSlide(index - 1));
+      next.addEventListener("click", () => showSlide(index + 1));
+
+      function showImage(nextIndex) {
+        currentImageIndex = (nextIndex + galleryImages.length) % galleryImages.length;
+        const image = galleryImages[currentImageIndex];
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt || "";
+      }
+
+      function openLightbox(startIndex) {
+        showImage(startIndex);
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeLightbox.focus();
+      }
+
+      function hideLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      galleryImages.forEach((image, imageIndex) => {
+        image.setAttribute("tabindex", "0");
+        image.setAttribute("role", "button");
+        image.addEventListener("click", () => openLightbox(imageIndex));
+        image.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openLightbox(imageIndex);
+          }
+        });
+      });
+
+      closeLightbox.addEventListener("click", hideLightbox);
+      prevImage.addEventListener("click", () => showImage(currentImageIndex - 1));
+      nextImage.addEventListener("click", () => showImage(currentImageIndex + 1));
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) hideLightbox();
+      });
+
+      window.addEventListener("keydown", (event) => {
+        if (lightbox.classList.contains("open")) {
+          if (event.key === "Escape") hideLightbox();
+          if (event.key === "ArrowLeft") showImage(currentImageIndex - 1);
+          if (event.key === "ArrowRight") showImage(currentImageIndex + 1);
+          return;
+        }
+        if (["ArrowRight", " ", "PageDown"].includes(event.key)) {
+          event.preventDefault();
+          showSlide(index + 1);
+        }
+        if (["ArrowLeft", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          showSlide(index - 1);
+        }
+      });
+
+      let touchStartX = 0;
+      window.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+      });
+      window.addEventListener("touchend", (event) => {
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) < 60) return;
+        showSlide(index + (delta < 0 ? 1 : -1));
+      });
+
+      showSlide(0);
+    </script>
+  </body>
+</html>

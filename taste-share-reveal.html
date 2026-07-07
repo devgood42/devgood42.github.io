@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>취향 나눔회 · 발표</title>
+    <meta name="description" content="글, 그림, 밴드, 앱으로 나누는 취향 나눔회 발표." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      :root {
+        --black: #000000;
+        --lemon: #efff00;
+        --paper: #e8e8e8;
+        --gray: #8a8e8d;
+        --white: #f7f7f4;
+        --ink: var(--white);
+        --soft: rgba(247, 247, 244, 0.64);
+        --muted: rgba(247, 247, 244, 0.23);
+        --line: rgba(247, 247, 244, 0.16);
+        --panel: rgba(247, 247, 244, 0.06);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: var(--black);
+        color: var(--ink);
+        font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .deck {
+        position: relative;
+        width: 100vw;
+        height: 100svh;
+        overflow: hidden;
+      }
+
+      .slides {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transform: translate3d(calc(var(--x, 0) * -100vw), 0, 0);
+        transition: transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .stack {
+        flex: 0 0 100vw;
+        height: 100svh;
+        display: flex;
+        flex-direction: column;
+        transform: translate3d(0, calc(var(--y, 0) * -100svh), 0);
+        transition: transform 680ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .slide {
+        flex: 0 0 100svh;
+        width: 100vw;
+        height: 100svh;
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        gap: 34px;
+        align-items: center;
+        padding: 54px 64px;
+      }
+
+      .slide::after {
+        content: "";
+        position: absolute;
+        right: 8%;
+        bottom: 7%;
+        width: 360px;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(239, 255, 0, 0.13), transparent 68%);
+        pointer-events: none;
+      }
+
+      .section-label {
+        position: absolute;
+        top: 34px;
+        right: 48px;
+        z-index: 4;
+        margin: 0;
+        color: var(--lemon);
+        font-size: 1.14rem;
+        font-weight: 620;
+      }
+
+      .side {
+        position: relative;
+        z-index: 3;
+        align-self: center;
+      }
+
+      .brand {
+        margin: 0 0 28px;
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 650;
+      }
+
+      .menu {
+        display: grid;
+        gap: 8px;
+      }
+
+      .menu p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.22rem;
+        font-weight: 560;
+        line-height: 1.18;
+      }
+
+      .menu .active {
+        color: var(--lemon);
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        min-width: 0;
+        display: grid;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+      }
+
+      .copy {
+        min-width: 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        letter-spacing: 0;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-size: 4.2rem;
+        font-weight: 760;
+        line-height: 1.02;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 2.45rem;
+        font-weight: 690;
+        line-height: 1.14;
+      }
+
+      .lead {
+        max-width: 700px;
+        margin: 18px 0 0;
+        color: var(--soft);
+        font-size: 1.44rem;
+        font-weight: 520;
+        line-height: 1.55;
+      }
+
+      .note {
+        max-width: 760px;
+        margin: 0;
+        color: var(--soft);
+        font-size: 1.28rem;
+        font-weight: 520;
+        line-height: 1.62;
+      }
+
+      .media {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 12px;
+        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.34);
+      }
+
+      .media img {
+        width: 100%;
+        height: 64svh;
+        object-fit: contain;
+        background: #050505;
+      }
+
+      .cover img {
+        height: 72svh;
+      }
+
+      .image-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .image-grid img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background: #050505;
+      }
+
+      .image-grid .wide {
+        grid-column: span 2;
+        aspect-ratio: 18 / 7;
+      }
+
+      .writing-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.58fr) minmax(0, 0.42fr);
+        gap: 12px;
+      }
+
+      .writing-grid .media:first-child {
+        grid-row: span 2;
+      }
+
+      .writing-grid img {
+        height: 100%;
+        min-height: 220px;
+        max-height: 64svh;
+      }
+
+      .band-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+        gap: 12px;
+      }
+
+      .band-grid img {
+        width: 100%;
+        height: 100%;
+        min-height: 240px;
+        object-fit: cover;
+      }
+
+      .band-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .app-board {
+        display: grid;
+        grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.45fr);
+        gap: 18px;
+        align-items: center;
+      }
+
+      .app-board .media img {
+        height: 62svh;
+      }
+
+      .app-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .app-row {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 11px;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        background: rgba(247, 247, 244, 0.07);
+      }
+
+      .app-row img {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .app-row span {
+        color: var(--lemon);
+        font-size: 1rem;
+        font-weight: 620;
+      }
+
+      .app-row strong {
+        display: block;
+        margin-top: 2px;
+        color: var(--ink);
+        font-size: 1.16rem;
+        font-weight: 620;
+      }
+
+      .progress {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        height: 3px;
+        background: rgba(247, 247, 244, 0.16);
+      }
+
+      .progress span {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--lemon);
+        transition: width 380ms ease;
+      }
+
+      .hint {
+        position: fixed;
+        right: 48px;
+        bottom: 28px;
+        z-index: 20;
+        color: rgba(247, 247, 244, 0.38);
+        font-size: 0.96rem;
+        font-weight: 560;
+      }
+
+      .slide .content,
+      .slide .side {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 620ms ease, transform 620ms ease;
+      }
+
+      .slide.active .content,
+      .slide.active .side {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .slides,
+        .stack,
+        .slide .content,
+        .slide .side,
+        .progress span {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 980px) {
+        body {
+          overflow: auto;
+        }
+
+        .deck,
+        .slides,
+        .stack,
+        .slide {
+          width: 100%;
+          height: auto;
+          min-height: auto;
+          overflow: visible;
+          transform: none;
+          display: block;
+        }
+
+        .slides,
+        .stack {
+          display: block;
+        }
+
+        .slide {
+          padding: 84px 22px 64px;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .side {
+          margin-bottom: 30px;
+        }
+
+        .menu {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px 14px;
+        }
+
+        .menu p {
+          font-size: 1.14rem;
+        }
+
+        .section-label {
+          top: 24px;
+          right: 22px;
+        }
+
+        .content,
+        .two-col,
+        .writing-grid,
+        .band-grid,
+        .app-board {
+          grid-template-columns: 1fr;
+        }
+
+        .media img,
+        .cover img,
+        .app-board .media img,
+        .writing-grid img {
+          height: auto;
+          max-height: none;
+        }
+
+        .progress,
+        .hint {
+          display: none;
+        }
+
+        .slide .content,
+        .slide .side {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        h1,
+        h2 {
+          font-size: 2.75rem;
+        }
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        .lead {
+          font-size: 1.16rem;
+        }
+
+        .note {
+          font-size: 1.08rem;
+        }
+
+        .menu {
+          grid-template-columns: 1fr;
+        }
+
+        .image-grid,
+        .image-grid .wide {
+          grid-template-columns: 1fr;
+          grid-column: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck" aria-live="polite">
+      <div class="slides" id="slides">
+        <section class="stack" data-section="00. 인트로">
+          <article class="slide active" data-title="00. 인트로">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p class="active">00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">00. 인트로 (1/2)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h1>취향 나눔회</h1>
+                <p class="lead">그동안의 취향 몇 가지를 보여드리려고 합니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/art-work.jpg" alt="취향 나눔회 아트워크" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="오늘의 순서">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p class="active">00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">00. 인트로 (2/2)</p>
+            <div class="content">
+              <h2>안녕하세요<br />신인호입니다.</h2>
+              <p class="lead">과거의 취향부터 현재하고 있는 것들까지 간단히 소개하려고 합니다.<br/>이어온 흔적들을 보며, 관심가는 취향을 찾아가는 시간이 되면 좋겠어요.</p>
+            </div>
+          </article>
+        </section>
+
+        <section class="stack" data-section="01. 글">
+          <article class="slide" data-title="01. 글">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p class="active">01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">01. 글 (1/2)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>내 속에 담긴 그릇이 언제나 고요하도록<br />오늘의 찻잎을 띄워 주소서</h3>
+                <p class="lead">카톡 상태 메시지</p>
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="글 상세">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p class="active">01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">01. 글 (2/2)</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>비슷한 마음의<br />다른 방향</h3>
+                <p class="note">지금 자주 쓰고 있지는 않지만, 예전에 쓴 글을 보면 어떤 감정을 오래 보고 싶어 했는지는 남아 있습니다.</p>
+              </div>
+              <div class="writing-grid">
+                <div class="media"><img src="assets/traces/tea-leaf.png" alt="찻잎을 띄워 주소서" /></div>
+                <div class="media"><img src="assets/traces/grow-leaf.png" alt="새싹을 틔웁니다" /></div>
+                <div class="media"><img src="assets/traces/unflower.png" alt="지고 난 꽃" /></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="stack" data-section="02. 그림">
+          <article class="slide" data-title="02. 그림">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p class="active">02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">02. 그림</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h2>말보다<br />먼저 그린 것들</h2>
+                <p class="lead">잘 설명하기 어려운 표정과 분위기를 선으로 남겼습니다.</p>
+              </div>
+              <div class="image-grid">
+                <img src="assets/traces/drawing-01.png" alt="직접 그린 그림 1" />
+                <img src="assets/traces/drawing-03.png" alt="직접 그린 그림 2" />
+                <img src="assets/traces/drawing-04.jpg" alt="직접 그린 그림 3" />
+                <img src="assets/traces/drawing-02.png" alt="직접 그린 그림 4" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="그림 상세">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p class="active">02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">아래로 더 보기</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>이모티콘으로<br />남은 표정</h3>
+                <p class="note">개발동아리에서 만들었던 이모티콘도 같은 결입니다. 말보다 먼저 떠오른 표정들을 모아둔 작업이었습니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/draw-emoticon.jpg" alt="개발동아리에서 만든 이모티콘 그림" />
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="stack" data-section="03. 밴드">
+          <article class="slide" data-title="03. 밴드">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p class="active">03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">03. 밴드</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h2>같이<br />맞춰지는 순간</h2>
+                <p class="lead">혼자 만든 것과는 다른 방식으로 남는 시간이 있습니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/band-2.JPG" alt="밴드 공연 장면" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="밴드 상세">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p class="active">03. 밴드</p>
+                <p>04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">아래로 더 보기</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h3>합이 맞는<br />감각</h3>
+                <p class="note">밴드는 완성된 결과보다, 서로의 소리를 들으며 조금씩 맞아가는 과정이 더 오래 남습니다.</p>
+              </div>
+              <div class="band-grid">
+                <div class="media"><img src="assets/traces/band-1.jpg" alt="밴드 합주 장면" /></div>
+                <div class="band-stack">
+                  <div class="media"><img src="assets/traces/band-3.JPG" alt="밴드로 남긴 장면 1" /></div>
+                  <div class="media"><img src="assets/traces/band-5.JPG" alt="밴드로 남긴 장면 2" /></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="stack" data-section="04. 앱">
+          <article class="slide" data-title="04. 앱">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p class="active">04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">04. 앱</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h2>요즘<br />만든 것들</h2>
+                <p class="lead">최근에는 관심 있는 감각을 작게 완성해보는 방식으로 앱을 만들고 있습니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/app.jpg" alt="현재 출시한 앱들 이미지" />
+              </div>
+            </div>
+          </article>
+          <article class="slide" data-title="앱 상세">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p class="active">04. 앱</p>
+                <p>05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">아래로 더 보기</p>
+            <div class="content app-board">
+              <div class="media">
+                <img src="assets/traces/dev-6.jpg" alt="앱을 만들고 남긴 화면" />
+              </div>
+              <div class="app-list">
+                <div class="app-row"><img src="assets/images/pomotime-icon.png" alt="" /><div><span>1월</span><strong>집중의 모양</strong></div></div>
+                <div class="app-row"><img src="assets/images/scoreboard-icon.png" alt="" /><div><span>2월</span><strong>점수를 남기는 일</strong></div></div>
+                <div class="app-row"><img src="assets/images/diary-icon.png" alt="" /><div><span>3월</span><strong>다시 꺼낸 기록</strong></div></div>
+                <div class="app-row"><img src="assets/images/ooring-icon.png" alt="" /><div><span>4월</span><strong>둘레를 잇는 것</strong></div></div>
+                <div class="app-row"><img src="assets/images/harucolor-icon.png" alt="" /><div><span>5월</span><strong>하루컬러</strong></div></div>
+                <div class="app-row"><img src="assets/images/trueNorth-icon.png" alt="" /><div><span>6월</span><strong>방향을 찾는 법</strong></div></div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="stack" data-section="05. 마무리">
+          <article class="slide" data-title="05. 마무리">
+            <aside class="side">
+              <p class="brand">취향 나눔회</p>
+              <div class="menu">
+                <p>00. 인트로</p>
+                <p>01. 글</p>
+                <p>02. 그림</p>
+                <p>03. 밴드</p>
+                <p>04. 앱</p>
+                <p class="active">05. 마무리</p>
+              </div>
+            </aside>
+            <p class="section-label">05. 마무리</p>
+            <div class="content two-col">
+              <div class="copy">
+                <h2>좋아해서<br />남겨둔 것들</h2>
+                <p class="lead">오늘은 그중 몇 가지를 가져왔습니다. 다음에는 또 다른 형태로 남아 있을 것 같습니다.</p>
+              </div>
+              <div class="media cover">
+                <img src="assets/traces/art-work.jpg" alt="취향 나눔회 아트워크" />
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+      <div class="hint" id="hint">← → 섹션 · ↑ ↓ 상세</div>
+    </main>
+
+    <script>
+      const stacks = [...document.querySelectorAll(".stack")];
+      const progressBar = document.querySelector("#progressBar");
+      const hint = document.querySelector("#hint");
+      let horizontalIndex = 0;
+      const verticalIndexes = stacks.map(() => 0);
+
+      function currentSlides() {
+        return [...stacks[horizontalIndex].querySelectorAll(".slide")];
+      }
+
+      function update() {
+        document.documentElement.style.setProperty("--x", horizontalIndex);
+        stacks.forEach((stack, stackIndex) => {
+          stack.style.setProperty("--y", verticalIndexes[stackIndex]);
+          stack.querySelectorAll(".slide").forEach((slide, slideIndex) => {
+            slide.classList.toggle("active", stackIndex === horizontalIndex && slideIndex === verticalIndexes[stackIndex]);
+          });
+        });
+
+        const total = stacks.reduce((sum, stack) => sum + stack.querySelectorAll(".slide").length, 0);
+        const before = stacks.slice(0, horizontalIndex).reduce((sum, stack) => sum + stack.querySelectorAll(".slide").length, 0);
+        const current = before + verticalIndexes[horizontalIndex] + 1;
+        progressBar.style.width = `${(current / total) * 100}%`;
+        hint.textContent = currentSlides().length > 1 ? "← → 섹션 · ↑ ↓ 상세" : "← → 섹션";
+      }
+
+      function moveHorizontal(delta) {
+        horizontalIndex = Math.max(0, Math.min(stacks.length - 1, horizontalIndex + delta));
+        update();
+      }
+
+      function moveVertical(delta) {
+        const slides = currentSlides();
+        verticalIndexes[horizontalIndex] = Math.max(0, Math.min(slides.length - 1, verticalIndexes[horizontalIndex] + delta));
+        update();
+      }
+
+      window.addEventListener("keydown", (event) => {
+        if (["ArrowRight", "PageDown"].includes(event.key)) {
+          event.preventDefault();
+          moveHorizontal(1);
+        }
+        if (["ArrowLeft", "PageUp"].includes(event.key)) {
+          event.preventDefault();
+          moveHorizontal(-1);
+        }
+        if (event.key === "ArrowDown") {
+          event.preventDefault();
+          moveVertical(1);
+        }
+        if (event.key === "ArrowUp") {
+          event.preventDefault();
+          moveVertical(-1);
+        }
+        if (event.key === " ") {
+          event.preventDefault();
+          const slides = currentSlides();
+          if (verticalIndexes[horizontalIndex] < slides.length - 1) {
+            moveVertical(1);
+          } else {
+            moveHorizontal(1);
+          }
+        }
+      });
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      window.addEventListener("touchstart", (event) => {
+        touchStartX = event.changedTouches[0].clientX;
+        touchStartY = event.changedTouches[0].clientY;
+      });
+      window.addEventListener("touchend", (event) => {
+        const dx = event.changedTouches[0].clientX - touchStartX;
+        const dy = event.changedTouches[0].clientY - touchStartY;
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < 56) return;
+        if (Math.abs(dx) > Math.abs(dy)) {
+          moveHorizontal(dx < 0 ? 1 : -1);
+        } else {
+          moveVertical(dy < 0 ? 1 : -1);
+        }
+      });
+
+      update();
+    </script>
+  </body>
+</html>

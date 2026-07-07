@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>취향 나눔회</title>
+    <meta name="description" content="글, 그림, 밴드, 앱으로 나누는 취향의 기록." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"
+    />
+    <style>
+      :root {
+        --black: #000000;
+        --lemon: #efff00;
+        --paper: #e8e8e8;
+        --gray: #8a8e8d;
+        --white: #f7f7f4;
+        --bg: var(--black);
+        --ink: var(--white);
+        --soft: rgba(247, 247, 244, 0.62);
+        --muted: rgba(247, 247, 244, 0.22);
+        --panel: rgba(247, 247, 244, 0.06);
+        --line: rgba(247, 247, 244, 0.16);
+        --yellow: var(--lemon);
+        --green: var(--lemon);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y mandatory;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .deck {
+        min-height: 100svh;
+      }
+
+      .section {
+        min-height: 100svh;
+        scroll-snap-align: start;
+        display: grid;
+        grid-template-columns: minmax(160px, 0.2fr) minmax(0, 0.8fr);
+        gap: 36px;
+        align-items: center;
+        padding: 54px 64px;
+        position: relative;
+        overflow: hidden;
+        background: var(--bg);
+      }
+
+      .section::after {
+        content: "";
+        position: absolute;
+        inset: auto 10% 8% auto;
+        width: 360px;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(239, 255, 0, 0.14), transparent 66%);
+        pointer-events: none;
+      }
+
+      .section:nth-child(even) {
+        background: #030303;
+      }
+
+      .side {
+        position: relative;
+        z-index: 1;
+      }
+
+      .label {
+        margin: 0 0 26px;
+        font-size: 1rem;
+        font-weight: 650;
+        color: var(--ink);
+      }
+
+      .menu {
+        display: grid;
+        gap: 8px;
+      }
+
+      .menu-item {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.26rem;
+        font-weight: 560;
+        line-height: 1.18;
+        transition: color 600ms ease, transform 600ms ease;
+      }
+
+      .menu-item.is-active {
+        color: var(--lemon);
+        transform: translateX(6px);
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 22px;
+        align-items: center;
+      }
+
+      .hero-content {
+        grid-template-columns: minmax(0, 0.34fr) minmax(260px, 0.66fr);
+      }
+
+      .split {
+        grid-template-columns: minmax(0, 0.3fr) minmax(0, 0.7fr);
+      }
+
+      .section-kicker {
+        position: absolute;
+        top: 34px;
+        right: 48px;
+        z-index: 5;
+        margin: 0;
+        color: var(--lemon);
+        font-size: 1.18rem;
+        font-weight: 620;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        letter-spacing: 0;
+      }
+
+      h1,
+      h2 {
+        margin: 0;
+        font-size: 4.35rem;
+        font-weight: 760;
+        line-height: 1.02;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 2.4rem;
+        font-weight: 720;
+        line-height: 1.12;
+      }
+
+      .small-copy {
+        max-width: 620px;
+        margin: 18px 0 0;
+        color: rgba(247, 247, 244, 0.74);
+        font-size: 1.42rem;
+        font-weight: 520;
+        line-height: 1.55;
+      }
+
+      .media-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        padding: 12px;
+        box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+      }
+
+      .media-card img {
+        width: 100%;
+        height: 62svh;
+        object-fit: contain;
+        background: #050505;
+      }
+
+      .cover-card img {
+        height: 72svh;
+      }
+
+      .caption {
+        margin: 12px 0 0;
+        color: var(--soft);
+        font-size: 1.16rem;
+        font-weight: 520;
+      }
+
+      .writing-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.58fr) minmax(0, 0.42fr);
+        gap: 12px;
+        align-items: stretch;
+      }
+
+      .writing-grid .media-card:first-child {
+        grid-row: span 2;
+      }
+
+      .writing-grid .media-card img {
+        height: 100%;
+        min-height: 210px;
+        max-height: 64svh;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .gallery img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        background: #050505;
+      }
+
+      .gallery .wide {
+        grid-column: span 2;
+        aspect-ratio: 18 / 7;
+      }
+
+      .band-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 12px;
+      }
+
+      .band-grid img {
+        width: 100%;
+        height: 100%;
+        min-height: 230px;
+        object-fit: cover;
+      }
+
+      .band-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .app-board {
+        display: grid;
+        grid-template-columns: minmax(0, 0.54fr) minmax(0, 0.46fr);
+        gap: 18px;
+        align-items: center;
+      }
+
+      .app-board .media-card img {
+        height: 62svh;
+      }
+
+      .app-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .app-row {
+        display: grid;
+        grid-template-columns: 48px minmax(0, 1fr);
+        gap: 11px;
+        align-items: center;
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .app-row img {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+      }
+
+      .app-row span {
+        color: var(--green);
+        font-size: 1rem;
+        font-weight: 620;
+      }
+
+      .app-row strong {
+        display: block;
+        margin-top: 2px;
+        color: var(--ink);
+        font-size: 1.18rem;
+        font-weight: 620;
+      }
+
+      .closing-list .menu-item {
+        color: var(--muted);
+      }
+
+      .closing-list .menu-item.is-active {
+        color: var(--lemon);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 900ms ease, transform 900ms ease;
+      }
+
+      .section.is-visible .reveal {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section.is-visible .reveal.delay-1 {
+        transition-delay: 160ms;
+      }
+
+      .section.is-visible .reveal.delay-2 {
+        transition-delay: 320ms;
+      }
+
+      .section.is-visible .reveal.delay-3 {
+        transition-delay: 480ms;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .menu-item {
+          transition: none;
+        }
+      }
+
+      @media (max-width: 980px) {
+        html {
+          scroll-snap-type: none;
+        }
+
+        .section {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 84px 22px 64px;
+        }
+
+        .label {
+          margin-bottom: 24px;
+        }
+
+        .menu {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px 14px;
+        }
+
+        .menu-item {
+          font-size: 1.2rem;
+        }
+
+        .menu-item.is-active {
+          transform: none;
+        }
+
+        .content,
+        .hero-content,
+        .split,
+        .writing-grid,
+        .band-grid,
+        .app-board {
+          grid-template-columns: 1fr;
+        }
+
+        .writing-grid .media-card:first-child {
+          grid-row: auto;
+        }
+
+        .media-card img,
+        .cover-card img,
+        .app-board .media-card img {
+          height: auto;
+          max-height: none;
+        }
+
+        .section-kicker {
+          position: absolute;
+          top: 24px;
+          right: 22px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .menu {
+          grid-template-columns: 1fr;
+        }
+
+        h1,
+        h2 {
+          font-size: 2.7rem;
+        }
+
+        h3 {
+          font-size: 2rem;
+        }
+
+        .small-copy {
+          font-size: 1.16rem;
+        }
+
+        .gallery,
+        .gallery .wide {
+          grid-template-columns: 1fr;
+          grid-column: auto;
+        }
+
+        .app-row {
+          grid-template-columns: 42px minmax(0, 1fr);
+        }
+
+        .app-row img {
+          width: 42px;
+          height: 42px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="section" id="intro">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu">
+            <p class="menu-item is-active">00. 인트로</p>
+            <p class="menu-item">01. 글</p>
+            <p class="menu-item">02. 그림</p>
+            <p class="menu-item">03. 밴드</p>
+            <p class="menu-item">04. 앱</p>
+            <p class="menu-item">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content hero-content">
+          <div class="reveal delay-1">
+            <p class="section-kicker">나의 취향은?</p>
+            <h1>흔적<br />남기기</h1>
+            <p class="small-copy">좋아하는 것을 말로 길게 설명하기보다, 그동안 남겨둔 것들을 몇 가지 보여드리려고 합니다.</p>
+          </div>
+          <div class="media-card cover-card reveal delay-2">
+            <img src="assets/traces/art-work.jpg" alt="취향 나눔회 아트워크" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="writing">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu">
+            <p class="menu-item">00. 인트로</p>
+            <p class="menu-item is-active">01. 글</p>
+            <p class="menu-item">02. 그림</p>
+            <p class="menu-item">03. 밴드</p>
+            <p class="menu-item">04. 앱</p>
+            <p class="menu-item">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content split">
+          <div class="reveal delay-1">
+            <p class="section-kicker">01. 글</p>
+            <h2>찻잎을<br />띄워 주소서</h2>
+            <p class="small-copy">마음을 조용히 붙잡고 싶을 때, 글을 씁니다.</p>
+          </div>
+          <div class="writing-grid reveal delay-2">
+            <div class="media-card">
+              <img src="assets/traces/tea-leaf.png" alt="찻잎을 띄워 주소서" />
+            </div>
+            <div class="media-card">
+              <img src="assets/traces/grow-leaf.png" alt="새싹을 틔웁니다" />
+            </div>
+            <div class="media-card">
+              <img src="assets/traces/unflower.png" alt="지고 난 꽃" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="drawing">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu">
+            <p class="menu-item">00. 인트로</p>
+            <p class="menu-item">01. 글</p>
+            <p class="menu-item is-active">02. 그림</p>
+            <p class="menu-item">03. 밴드</p>
+            <p class="menu-item">04. 앱</p>
+            <p class="menu-item">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content split">
+          <div class="reveal delay-1">
+            <p class="section-kicker">02. 그림</p>
+            <h2>말보다<br />먼저 그린 것들</h2>
+            <p class="small-copy">잘 설명하기 어려운 표정과 분위기를 선으로 남겼습니다.</p>
+          </div>
+          <div class="gallery reveal delay-2">
+            <img src="assets/traces/drawing-01.png" alt="직접 그린 그림 1" />
+            <img src="assets/traces/drawing-03.png" alt="직접 그린 그림 2" />
+            <img src="assets/traces/drawing-04.jpg" alt="직접 그린 그림 3" />
+            <img src="assets/traces/drawing-02.png" alt="직접 그린 그림 4" />
+            <img class="wide" src="assets/traces/draw-emoticon.jpg" alt="개발동아리에서 만든 이모티콘 그림" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="band">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu">
+            <p class="menu-item">00. 인트로</p>
+            <p class="menu-item">01. 글</p>
+            <p class="menu-item">02. 그림</p>
+            <p class="menu-item is-active">03. 밴드</p>
+            <p class="menu-item">04. 앱</p>
+            <p class="menu-item">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content split">
+          <div class="reveal delay-1">
+            <p class="section-kicker"><strong>03. 밴드</strong></p>
+            <h2>같이<br />맞춰지는 순간</h2>
+            <p class="small-copy">혼자 만든 것과는 다른 방식으로 남는 시간이 있습니다.</p>
+          </div>
+          <div class="band-grid reveal delay-2">
+            <div class="media-card">
+              <img src="assets/traces/band-2.JPG" alt="밴드 공연 장면" />
+            </div>
+            <div class="band-stack">
+              <div class="media-card">
+                <img src="assets/traces/band-1.jpg" alt="밴드 합주 장면" />
+              </div>
+              <div class="media-card">
+                <img src="assets/traces/band-5.JPG" alt="밴드로 남긴 장면" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="apps">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu">
+            <p class="menu-item">00. 인트로</p>
+            <p class="menu-item">01. 글</p>
+            <p class="menu-item">02. 그림</p>
+            <p class="menu-item">03. 밴드</p>
+            <p class="menu-item is-active">04. 앱</p>
+            <p class="menu-item">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content split">
+          <div class="reveal delay-1">
+            <p class="section-kicker">04. 앱</p>
+            <h2>요즘<br />만든 것들</h2>
+            <p class="small-copy">최근에는 관심 있는 감각을 작게 완성해보는 방식으로 앱을 만들고 있습니다.</p>
+          </div>
+          <div class="app-board reveal delay-2">
+            <div class="media-card">
+              <img src="assets/traces/app.jpg" alt="현재 출시한 앱들 이미지" />
+            </div>
+            <div class="app-list">
+              <div class="app-row">
+                <img src="assets/images/pomotime-icon.png" alt="" />
+                <div><span>1월</span><strong>Pomotime</strong></div>
+              </div>
+              <div class="app-row">
+                <img src="assets/images/scoreboard-icon.png" alt="" />
+                <div><span>2월</span><strong>Scoreboard</strong></div>
+              </div>
+              <div class="app-row">
+                <img src="assets/images/diary-icon.png" alt="" />
+                <div><span>3월</span><strong>Re:Post</strong></div>
+              </div>
+              <div class="app-row">
+                <img src="assets/images/ooring-icon.png" alt="" />
+                <div><span>4월</span><strong>Ooring</strong></div>
+              </div>
+              <div class="app-row">
+                <img src="assets/images/harucolor-icon.png" alt="" />
+                <div><span>5월</span><strong>하루컬러</strong></div>
+              </div>
+              <div class="app-row">
+                <img src="assets/images/trueNorth-icon.png" alt="" />
+                <div><span>6월</span><strong>북극성</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="closing">
+        <aside class="side reveal">
+          <p class="label">취향 나눔회</p>
+          <div class="menu closing-list">
+            <p class="menu-item">00. 인트로</p>
+            <p class="menu-item">01. 글</p>
+            <p class="menu-item">02. 그림</p>
+            <p class="menu-item">03. 밴드</p>
+            <p class="menu-item">04. 앱</p>
+            <p class="menu-item is-active">05. 마무리</p>
+          </div>
+        </aside>
+        <div class="content hero-content">
+          <div class="reveal delay-1">
+            <p class="section-kicker">05. 마무리</p>
+            <h2>좋아해서<br />남겨둔 것들</h2>
+            <p class="small-copy">오늘은 그중 몇 가지를 가져왔습니다. 다음에는 또 다른 형태로 남아 있을 것 같습니다.</p>
+          </div>
+          <div class="media-card cover-card reveal delay-2">
+            <img src="assets/traces/dev-6.jpg" alt="앱을 만들고 남긴 화면" />
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      const sections = document.querySelectorAll(".section");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+            }
+          });
+        },
+        { threshold: 0.42 },
+      );
+
+      sections.forEach((section) => observer.observe(section));
+      sections[0].classList.add("is-visible");
+    </script>
+  </body>
+</html>
