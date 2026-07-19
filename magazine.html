@@ -27,7 +27,7 @@
             height: auto;
             overflow-y: visible;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .magazine-container {
                 height: 100vh;
                 overflow-y: scroll;
@@ -43,7 +43,7 @@
             justify-content: center;
             padding: 6rem 1rem 4rem; /* More space for masthead on mobile */
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             section {
                 height: 100vh;
                 scroll-snap-align: start;
@@ -66,7 +66,7 @@
         }
 
         .cover-title {
-            font-size: 4rem;
+            font-size: clamp(2.2rem, 4.5vw, 4rem);
             font-weight: 900;
             letter-spacing: -0.05em;
             text-transform: uppercase;
@@ -256,17 +256,22 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1023px) {
             .magazine-container { padding-top: 5rem; }
             .cover-title { font-size: 2.2rem; margin-bottom: 0.5rem; }
             .issue-number { font-size: 6rem; top: 1rem; left: 0.5rem; }
-            .gallery-item { height: 30vh; } /* Slightly smaller for mobile height */
+            .gallery-item { height: 35vh; } /* Slightly smaller for mobile height */
             .masthead { padding: 1.5rem 1rem; }
             .masthead h1 { font-size: 1.1rem; }
             .tech-highlights { max-width: 100%; margin-top: 1.5rem; padding-top: 1rem; }
             .glan-tag { font-size: 0.65rem; padding: 0.15rem 0.6rem; }
             .feature-item { font-size: 0.75rem; margin-bottom: 0.4rem; }
             .gallery-container { touch-action: auto; } /* Fix for mobile drag */
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .gallery-item { height: 45vh; }
+            .cover-title { font-size: 3rem; }
         }
 
         /* Animations */
@@ -279,7 +284,7 @@
             opacity: 1;
             transform: translateY(0);
         }
-        @media (max-width: 768px) {
+        @media (max-width: 1023px) {
             .tech-label { margin-bottom: 0.5rem; }
             .gallery-track { gap: 1rem; }
             .tech-highlights { border-top: 1px solid rgba(0,0,0,0.05); }
@@ -297,7 +302,7 @@
             width: 100%;
             scroll-snap-align: start;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .magazine-footer {
                 height: 100vh;
                 scroll-snap-stop: always;
@@ -323,8 +328,8 @@
         <!-- Issue 06: TrueNorth -->
         <section id="issue-06">
             <div class="issue-number serif">06</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #050a12;">Compass</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">북극성</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -341,16 +346,16 @@
                         <div class="feature-item">SQLite 기반 로컬 저장과 캘린더 방향감 기록</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-truenorth">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
-                    <div class="flex justify-end md:justify-start">
+                    <div class="flex justify-end lg:justify-start">
                         <div class="scroll-hint">Explore the spread</div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-zinc-200">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block border border-zinc-200">
                         <img src="assets/images/trueNorth-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -360,8 +365,8 @@
         <!-- Issue 05: HaruColor -->
         <section id="issue-05">
             <div class="issue-number serif">05</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #0b0a08;">Photo</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">HaruColor</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -378,16 +383,16 @@
                         <div class="feature-item">3x3 액자형 콜라주 생성 및 저장</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-harucolor">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
-                    <div class="flex justify-end md:justify-start">
+                    <div class="flex justify-end lg:justify-start">
                         <div class="scroll-hint">Explore the spread</div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-zinc-200">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block border border-zinc-200">
                         <img src="assets/images/harucolor-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -397,8 +402,8 @@
         <!-- Issue 04: ooring -->
         <section id="issue-04">
             <div class="issue-number serif">04</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #e11d48;">Lifestyle</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">ooring</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -415,16 +420,16 @@
                         <div class="feature-item">초대 코드 기반 공간 공유 시스템</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-ooring">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
-                    <div class="flex justify-end md:justify-start">
+                    <div class="flex justify-end lg:justify-start">
                         <div class="scroll-hint">Explore the spread</div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-rose-100">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block border border-rose-100">
                         <img src="assets/images/ooring-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -435,8 +440,8 @@
         <!-- Issue 03: Re:Post -->
         <section id="issue-03">
             <div class="issue-number serif">03</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #4f46e5;">Lifestyle</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">Re:Post</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -454,16 +459,16 @@
                         <div class="feature-item">생체 인증 및 로컬 데이터 백업 지원</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-repost">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
-                    <div class="flex justify-end md:justify-start">
+                    <div class="flex justify-end lg:justify-start">
                         <div class="scroll-hint">Explore the spread</div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block border border-indigo-100">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block border border-indigo-100">
                         <img src="assets/images/report.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -474,8 +479,8 @@
         <!-- Issue 02: Scoreboard -->
         <section id="issue-02">
             <div class="issue-number serif">02</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #2e7d32;">Sports</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">Scoreboard</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -493,16 +498,16 @@
                         <div class="feature-item">팀 정보 커스텀 및 다양한 보드 테마 지원</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-scoreboard">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
-                    <div class="flex justify-end md:justify-start">
+                    <div class="flex justify-end lg:justify-start">
                         <div class="scroll-hint">Explore the spread</div>
                     </div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block">
                         <img src="assets/images/scoreboard-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -512,8 +517,8 @@
         <!-- Issue 01: Pomotime -->
         <section id="issue-01">
             <div class="issue-number serif">01</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up">Productivity</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif italic">Pomotime</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -531,14 +536,14 @@
                         <div class="feature-item">깔끔하고 직관적인 UI/UX</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-pomotime">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
                     <div class="scroll-hint">Explore the spread</div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block">
                         <img src="assets/images/pomotime-icon.png" class="w-16 h-16 rounded-2xl " alt="Icon">
                     </div>
                 </div>
@@ -548,8 +553,8 @@
         <!-- Archive: Exchange Diary -->
         <section id="archive-diary">
             <div class="issue-number serif" style="font-size: 8rem; top: 4rem;">Archive</div>
-            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10 gap-12">
-                <div class="w-full md:w-1/3 space-y-4">
+            <div class="container mx-auto px-6 flex flex-col lg:flex-row items-center relative z-10 gap-6 lg:gap-8 xl:gap-12">
+                <div class="w-full lg:w-5/12 xl:w-1/3 space-y-4">
                     <div class="glan-tag fade-up" style="background-color: #1976d2;">Social</div>
                     <h2 class="cover-title fade-up fade-delay-1 serif">공유일기</h2>
                     <p class="text-xl max-w-md fade-up fade-delay-2 leading-relaxed opacity-80 text-black">
@@ -566,14 +571,14 @@
                         <div class="feature-item">가족, 연인을 위한 프라이빗 소셜 공간</div>
                     </div>
                 </div>
-                <div class="w-full md:w-2/3 relative fade-up fade-delay-1">
+                <div class="w-full lg:w-7/12 xl:w-2/3 relative fade-up fade-delay-1">
                     <div class="gallery-container" id="gallery-diary">
                         <div class="gallery-track">
                             <!-- Injected by JS -->
                         </div>
                     </div>
                     <div class="scroll-hint">Explore the spread</div>
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden md:block">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl hidden lg:block">
                         <img src="assets/images/diary-icon.png" class="w-16 h-16 rounded-2xl" alt="Icon">
                     </div>
                 </div>
@@ -585,7 +590,7 @@
             <div class="text-center space-y-6">
                 <h2 class="serif italic text-4xl">Good42.</h2>
                 <p class="text-sm md:text-base opacity-70 max-w-xl mx-auto leading-relaxed px-6">
-                    매달 일상의 불편함을 정의하고, 매월 제품을 런칭하는 목표로<br class="hidden md:block">
+                    매달 일상의 불편함을 정의하고, 매월 제품을 런칭하는 목표로<br class="hidden lg:block">
                     2026년 새롭게 시작한 개인 프로젝트입니다.
                 </p>
                 <p class="opacity-30 text-[10px] tracking-[0.3em] uppercase">Monthly Edition 2026</p>
