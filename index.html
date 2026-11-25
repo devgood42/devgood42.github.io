@@ -362,7 +362,7 @@
         .hero-grid,
         .piece-grid,
         .piece:nth-child(even) .piece-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 1fr);
         }
 
         .piece:nth-child(even) .piece-copy,
@@ -393,10 +393,14 @@
 
         .header-inner {
           min-height: 64px;
+          flex-wrap: wrap;
+          gap: 8px 16px;
+          padding-block: 8px;
         }
 
         .nav {
           gap: 14px;
+          flex-wrap: wrap;
         }
 
         .nav a:nth-child(2),
@@ -427,6 +431,11 @@
 
         .piece-title {
           gap: 12px;
+        }
+
+        .piece-title h2 {
+          font-size: clamp(2rem, 11vw, 3.1rem);
+          overflow-wrap: anywhere;
         }
 
         .view-pair {
@@ -460,6 +469,7 @@
             <span lang="ko">Apps</span>
             <span lang="en">Apps</span>
           </a>
+          <a href="https://42inshin.github.io/">Tools</a>
           <a href="https://www.linkedin.com/in/inshin/recent-activity/all/">
             <span lang="ko">LinkedIn</span>
             <span lang="en">LinkedIn</span>
